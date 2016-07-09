@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/style.css' />
+
+    <!-- Vendor JS libs -->
+    <script src="//apis.google.com/js/client.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="/js/app/app.js"></script>
+    <script src="/js/app/config.js"></script>
+    
+    <!-- controllers -->
+    <script src="/js/app/controllers.js"></script>
+    <script src="/js/app/controllers/authCtrl.js"></script>
+
+    <!-- services -->
+    <script src="/js/app/services.js"></script>
+    <script src="/js/app/services/authService.js"></script>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '<%= oauth.facebook.app_id %>',
+          xfbml      : true,
+          version    : 'v2.6'
+        })
+      };
+
+      // Load the SDK asynchronously
+      // JS SDK - this will be loaded asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+  </head>
+  <body ng-app="courseApp" ng-controller="authCtrl">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div>
+      <button ng-click="facebookLogin()">Login with Facebook</button>
+      <button ng-click="googleLogin()">Login with Google</button>
+    </div>
+  </body>
+</html>
