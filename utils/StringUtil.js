@@ -11,7 +11,7 @@ module.exports = {
         return str
     },
 
-    getFriendlyURL: function (title) {
+    getUrlTitle: function (title) {
         var tmp = this.convertToViString(title)
         return tmp.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
     }

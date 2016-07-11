@@ -2,15 +2,15 @@ var mongoose = require('mongoose')
 var StringUtils = require('../utils/StringUtil')
 
 var TopicSchema = mongoose.Schema({
-    subject: {
-        type: String,
-        required: true
+    subjectId: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
     },
 	title: {
 		type: String,
 		required: true
 	},
-    friendlyTitle: {
+    urlTitle: {
         type: String,
         required: true,
         unique: true
@@ -25,9 +25,23 @@ var TopicSchema = mongoose.Schema({
     }
 })
 
-TopicSchema.pre('save', function(next) {
-	this.friendlyTitle = StringUtils.getFriendlyURL(this.title)
-	next()
-})
+TopicSchema.methods.add = function(callback) {
+    if (this.urlTitle == undefined || this.urlTitle == '')
+        this.urlTitle = StringUtils.getUrlTitle(this.title.vi)
+    TopicSchema.find({ 'urlTitle': this.urlTitle }, function(err, topic) {
+        if (err) {
+            return callback(Result.DBError)
+        }
+        if (topic) {
+            return callback(Result.DuplicateTitle)
+        }
+        this.save(function(err2, result) {
+            if (err2) {
+                return callback(Result.DBError)
+            }
+            return callback(null, result)
+        })
+    })
+}
 
 module.exports = mongoose.model('Topic', TopicSchema)

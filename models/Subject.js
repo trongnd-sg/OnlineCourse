@@ -1,4 +1,5 @@
-var mongoose = require('mongoose')
+var mongoose    = require('mongoose')
+var Result      = require('../models/Result')
 var StringUtils = require('../utils/StringUtil')
 
 var SubjectSchema = mongoose.Schema({
@@ -11,7 +12,7 @@ var SubjectSchema = mongoose.Schema({
             type: String,
         }		
 	},
-    friendlyTitle: {
+    urlTitle: {
         type: String,
         required: true,
         unique: true
@@ -23,17 +24,34 @@ var SubjectSchema = mongoose.Schema({
     thumbnail: {
         type: String
     },
+    topics: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic'
+    }],
     created: {
     	type: Date,
     	default: new Date()
     }
 })
 
-SubjectSchema.methods.add = function() {
-    this.friendlyTitle = StringUtils.getFriendlyURL(this.title.vi)
-    SubjectSchema.find({ 'friendlyTitle': this.friendlyTitle}, function(err, subject) {
-        
+SubjectSchema.methods.add = function(callback) {
+    if (this.urlTitle == undefined || this.urlTitle == '')
+        this.urlTitle = StringUtils.getUrlTitle(this.title.vi)
+    SubjectSchema.find({ 'urlTitle': this.urlTitle }, function(err, subject) {
+        if (err) {
+            return callback(Result.DBError)
+        }
+        if (subject) {
+            return callback(Result.DuplicateTitle)
+        }
+        this.save(function(err2, result) {
+            if (err2) {
+                return callback(Result.DBError)
+            }
+            return callback(null, result)
+        })
     })
 }
+
 
 module.exports = mongoose.model('Subject', SubjectSchema)

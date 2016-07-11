@@ -78,6 +78,14 @@ var ResultHash = {
 			vi: 'Không thể kết nối với Facebook!',
 			en: 'Can not connect to Facebook!'
 		}	
+	},
+	'DuplicateTitle': {
+		code: 'DuplicateTitle',
+		status: 401,
+		message: {
+			vi: 'Tiêu đề đã tồn tại!',
+			en: 'Dupilcate title!'
+		}	
 	}
 }
 
