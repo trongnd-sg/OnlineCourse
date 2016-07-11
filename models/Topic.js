@@ -35,19 +35,19 @@ var TopicSchema = mongoose.Schema({
 TopicSchema.methods.add = function(callback) {
     if (this.urlTitle == undefined || this.urlTitle == '')
         this.urlTitle = StringUtils.getUrlTitle(this.title.vi)
-
+        var topic =this
     async.waterfall([
         function(cb) {
-            TopicSchema.find({ 'urlTitle': this.urlTitle }, function(err, topic) {
+            this.model('Topic').find({ 'urlTitle': this.urlTitle }, function(err, result) {
                 if (err)
                     return cb(Result.DBError)
-                if (topic)
+                if (result && result.length > 0)
                     return callback(Result.DuplicateTitle)
                 return cb(null)
             })
         },
         function(cb) {
-            Subject.findById(this.subjectId, function(err, subject) {
+            Subject.findById(topic.subjectId, function(err, subject) {
                 if (err)
                     return cb(Result.DBError)
                 if (!subject) 
@@ -56,18 +56,18 @@ TopicSchema.methods.add = function(callback) {
             })
         },
         function(subject, cb) {
-            this.save(function(err, topic) {
+            topic.save(function(err, savedTopic) {
                 if (err)
                     return cb(Result.DBError)
-                return cb(null, subject, topic)
+                return cb(null, subject, savedTopic)
             })
         },
-        function(subject, topic, cb) {
-            subject.tpoics.push(topic._id)
+        function(subject, savedTopic, cb) {
+            subject.topics.push(savedTopic._id)
             subject.save(function(err) {
                 if (err)
                     return cb(Result.DBError)
-                return cb(null, topic)
+                return cb(null, savedTopic)
             })
         }
     ], function(err, result) {
