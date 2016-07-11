@@ -168,5 +168,17 @@ router.post('/', function(req, res, next) {
 	}
 })
 
+/**
+ * refresh token
+ */
+router.put('/', function(req, res, next) {
+	var token =  req.body.token || req.query.token || req.headers['x-authorization']
+	// return if user not sign in yet
+	if (!token) {
+		res.status(Result.UnAuthorized.status).json(Result.UnAuthorized)
+		return
+	}
+})
+
 module.exports = router
 
