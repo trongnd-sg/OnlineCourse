@@ -6,6 +6,13 @@ var router  = express.Router()
 
 
 router.get('/', function(req, res, next) {
+    Subject.find({}, function(err, subjects) {
+        if (err) {
+            res.status(Result.DBError.status).json(Result.DBError)
+            return
+        }
+        res.json(subjects)
+    })
 })
 
 router.get('/:title', function(req, res, next) {
@@ -17,7 +24,7 @@ router.post('/', function(req, res, next) {
     var subject = new Subject(req.body);
     subject.add(function(err, result) {
         if (err) {
-            res.status(Result.DBError).json(Result.DBError)
+            res.status(err.status).json(err)
             return
         }
         res.json(result)

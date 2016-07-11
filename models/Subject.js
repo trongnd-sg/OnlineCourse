@@ -37,14 +37,15 @@ var SubjectSchema = mongoose.Schema({
 SubjectSchema.methods.add = function(callback) {
     if (this.urlTitle == undefined || this.urlTitle == '')
         this.urlTitle = StringUtils.getUrlTitle(this.title.vi)
-    SubjectSchema.find({ 'urlTitle': this.urlTitle }, function(err, subject) {
+    var newSubject = this
+    this.model('Subject').find({ 'urlTitle': this.urlTitle }, function(err, subject) {
         if (err) {
             return callback(Result.DBError)
         }
-        if (subject) {
+        if (subject && subject.length > 0) {
             return callback(Result.DuplicateTitle)
         }
-        this.save(function(err2, result) {
+        newSubject.save(function(err2, result) {
             if (err2) {
                 return callback(Result.DBError)
             }

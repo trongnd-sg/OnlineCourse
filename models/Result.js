@@ -81,7 +81,7 @@ var ResultHash = {
 	},
 	'DuplicateTitle': {
 		code: 'DuplicateTitle',
-		status: 401,
+		status: 400,
 		message: {
 			vi: 'Tiêu đề đã tồn tại!',
 			en: 'Dupilcate title!'
