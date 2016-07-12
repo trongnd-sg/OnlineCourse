@@ -1,17 +1,20 @@
 angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config'])
 
 .run(function() {
-    console.log('Angular is running.')
+	console.log('Angular is running.')
 })
 
 .config(function($httpProvider, config) {
-    console.log('Angular is configuring.')
-    $httpProvider.interceptors.push(function($window, $q) {
+  console.log('Angular is configuring.')
+  /**
+   * configure HTTP Provider
+   */
+  $httpProvider.interceptors.push(function($window, $q) {
     return {
       request: function(cfg) {
         if ($window.localStorage.getItem(config.LOCAL_TOKEN_KEY))
           cfg.headers[config.HTTP_AUTH_HEADER] = $window.localStorage.getItem(config.LOCAL_TOKEN_KEY)
-        return cfg;
+	      return cfg;
       },
       /*
       responseError: function (response) {
@@ -23,5 +26,5 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
       }
       */
     }
-  })
+  }) // end of httpProvider config
 })

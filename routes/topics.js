@@ -1,37 +1,36 @@
 var express = require('express')
-var Subject = require('../models/Subject')
+var Topic   = require('../models/Topic')
 var Result  = require('../models/Result')
 
 var router  = express.Router()
 
 
 router.get('/', function(req, res, next) {
-    Subject.find({}, function(err, subjects) {
+    Topic.find({}, function(err, topics) {
         if (err) {
             res.status(Result.DBError.status).json(Result.DBError)
             return
         }
-        res.json(subjects)
+        res.json(topics)
     })
 })
 
 router.get('/:title', function(req, res, next) {
     var urlTile = req.params.title
-    Subject
+    Topic
     .findOne({ 'urlTitle': urlTile })
-    .populate('topics')
-    .exec(function (err, subject) {
+    .exec(function (err, topic) {
         if (err) {
             res.status(Result.DBError.status).json(Result.DBError)
             return
         }
-        res.json(subject)
+        res.json(topic)
     })
 })
 
 router.post('/', function(req, res, next) {
-    var subject = new Subject(req.body);
-    subject.add(function(err, result) {
+    var topic = new Topic(req.body);
+    topic.add(function(err, result) {
         if (err) {
             res.status(err.status).json(err)
             return

@@ -7,6 +7,7 @@
     <!-- Vendor JS libs -->
     <script src="//apis.google.com/js/client.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//content.jwplatform.com/libraries/frRB7BnA.js"></script>
     
     <!-- App scripts -->
     <script src="/js/app/app.js"></script>
@@ -37,15 +38,24 @@
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+      } (document, 'script', 'facebook-jssdk'));
     </script>
   </head>
   <body ng-app="courseApp" ng-controller="authCtrl">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <div id="my-video"></div>
     <div>
       <button ng-click="facebookLogin()">Login with Facebook</button>
       <button ng-click="googleLogin()">Login with Google</button>
     </div>
+    <script>
+        jwplayer("my-video").setup({
+          file: "https://content.jwplatform.com/videos/HkauGhRi-640.mp4",
+          //width: "720",
+          //height: "480",
+          primary: "flash"
+        })
+    </script>
   </body>
 </html>

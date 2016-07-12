@@ -38,7 +38,7 @@ TopicSchema.methods.add = function(callback) {
         var topic =this
     async.waterfall([
         function(cb) {
-            this.model('Topic').find({ 'urlTitle': this.urlTitle }, function(err, result) {
+            topic.model('Topic').find({ 'urlTitle': topic.urlTitle }, function(err, result) {
                 if (err)
                     return cb(Result.DBError)
                 if (result && result.length > 0)
