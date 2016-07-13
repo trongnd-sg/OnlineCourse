@@ -69,6 +69,7 @@ function doLoginWithGoogle(req, res, next) {
 			return
 		}
 		var obj = JSON.parse(body)
+		console.log(obj)
 		User.find({ 'google.id': obj.id }).limit(1).exec(function(err, users) {
 			if (err) {
 				res.status(Result.DBError.status).json(Result.DBError)
@@ -82,6 +83,8 @@ function doLoginWithGoogle(req, res, next) {
 					},
 					status: 'Activated'
 				})
+				if (!user.name && obj.name)
+					user.name = obj.name
 				user.save(function(err, result) {
 					if (err) {
 						res.status(Result.DBError.status).json(Result.DBError)
@@ -115,6 +118,7 @@ function doLoginWithFacebook(req, res, next) {
 			return
 		}
 		var obj = JSON.parse(body)
+		console.log(obj)
 		User.find({ 'facebook.id': obj.id }).limit(1).exec(function(err, users) {
 			if (err) {
 				res.status(Result.DBError.status).json(Result.DBError)
@@ -128,6 +132,8 @@ function doLoginWithFacebook(req, res, next) {
 					},
 					status: 'Activated'
 				})
+				if (!user.name && obj.name)
+					user.name = obj.name
 				user.save(function(err, result) {
 					if (err) {
 						res.status(Result.DBError.status).json(Result.DBError)

@@ -7,6 +7,8 @@ var router  = express.Router()
 /**
  * searchContext: {
  *  text: '',
+ *  subject: 'subjectId',
+ *  topic: 'topicId',
  *  free: true/false,
  *  page: 0,
  *  size: 20,
@@ -14,9 +16,11 @@ var router  = express.Router()
  * }
  */
 router.get('/', function(req, res, next) {
-    Course.find({}, function(err, courses) {
+    var searchContext = req.query
+     
+    Course.search(searchContext, function(err, courses) {
         if (err) {
-            res.status(Result.DBError.status).json(Result.DBError)
+            res.status(err.status).json(err)
             return
         }
         res.json(courses)

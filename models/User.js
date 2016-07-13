@@ -1,4 +1,7 @@
-var mongoose = require('mongoose')
+var async       = require('async')
+var mongoose    = require('mongoose')
+var Result      = require('../models/Result')
+var StringUtils = require('../utils/StringUtil')
 
 var UserSchema = mongoose.Schema({
 	email: {
@@ -15,21 +18,14 @@ var UserSchema = mongoose.Schema({
         id: String,
         email: String
     },
-	firstName: {
+	name: {
 		type: String,
-		//require: true
+		require: true
 	},
-	lastName: {
+	urlName: {
 		type: String,
-		//require: true
-	},
-	middleInitial: {
-		type: String
-	},
-	urlTitle: {
-		type: String,
-		//require: true,
-		//unique: true
+		require: true,
+		unique: true
 	},
     avatar: { // link to avatar
         type: String
@@ -81,6 +77,38 @@ UserSchema.statics.generateHash = function(password) {
 UserSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 }
+
+UserSchema.statics.generateUrlName = function(name, suffix, callback) {
+	var self = this.model('User')
+	var urlName = StringUtils.getUrlTitle(name)
+	if (suffix >= 0) urlName += '-' + suffix 
+	self.find({ 'urlName': urlName }, function(err, users) {
+		if (err) {
+			console.log('GenerateURLName:', err)
+			return callback(Result.DBError)
+		}
+		if (users && users.length > 0) {
+			return self.generateUrlName(name, suffix + 1, callback)
+		}
+		return callback(null, urlName)
+	})
+}
+
+UserSchema.pre('validate', function(next) {
+	var self = this
+	if (self.urlName) {
+		next()
+		return;
+	}
+	self.model('User').generateUrlName(self.name, -1, function(err, urlName) {
+		if (err) {
+			next(err)
+			return
+		}
+		self.urlName = urlName
+		next()
+	})
+})
 
 /* 
  * custom to JSON

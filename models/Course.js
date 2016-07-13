@@ -90,7 +90,7 @@ var CourseSchema = mongoose.Schema({
         rating2Star: Number,
         rating1Star: Number,
     },
-    releasedDate: {
+    released: {
         type: Date,
         default: new Date()
     },
@@ -163,10 +163,32 @@ CourseSchema.statics.getByTitle = function(title, callback) {
     })
 }
 
-CourseSchema.statics.search = function(text, callback) {
-    var textSearch = StringUtils.convertToViString(text)
-    var self = this
-    self.model('Course').find({ $text: { $search: textSearch }}, function(err, courses) {
+CourseSchema.statics.search = function(searchContext, callback) {
+    var self = this.model('Course')
+    var query = (searchContext.text && searchContext.text.length > 0) ? 
+						self.find({ $text: { $search: StringUtils.convertToViString(searchContext.text) }}) : 
+						self.find({})
+    
+    if (searchContext.free)
+        query = query.where('isFree', true)
+
+    if (searchContext.subject)
+        query = query.where('subject', searchContext.subject)
+
+    if (searchContext.topic)
+        query = query.where('topic', searchContext.topic)
+
+    if (searchContext.page && searchContext.size) {
+	    query = query.skip((parseInt(searchContext.page) - 1) * parseInt(searchContext.size))
+		query = query.limit(parseInt(searchContext.size))
+    }
+
+    if (searchContext.order && 2 == parseInt(searchContext.order))
+        query = query.sort('-rating.total')
+    else
+        query = query.sort('-released')
+    
+    query.exec(function(err, courses) {
         if (err)
             return callback(Result.DBError)
         if (courses == null || courses.length == 0)
