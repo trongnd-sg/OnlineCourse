@@ -7,7 +7,7 @@ var bodyParser   = require('body-parser')
 var mongoose     = require('mongoose')
 
 var routes       = require('./routes/index')
-var users        = require('./routes/users')
+var setup        = require('./routes/setup')
 var auth         = require('./routes/auth')
 var subjects     = require('./routes/subjects')
 var topics       = require('./routes/topics')
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 mongoose.connect(require('./config/db.js').url)
 
 app.use('/', routes)
-app.use('/users', users)
+app.use('/setup', setup)
 
 app.use('/api/auth', auth)
 app.use('/api/subjects', subjects)

@@ -17,7 +17,7 @@ var CourseSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-    friendlyTitle: {
+    urlTitle: {
         type: String,
         required: true,
         unique: true
@@ -45,11 +45,39 @@ var CourseSchema = mongoose.Schema({
         default: 0
     },
     modules: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'CourseModule'
+        title: {
+            type: String,
+            require: true
+        },
+        urlTitle: {
+            type: String,
+            require: true,
+            unique: true
+        },
+        contents: [{
+            title: {
+                type: String,
+                require: true
+            },
+            trailer: {
+                url: String,
+                duration: Number
+            },
+            video: {
+                url: String,
+                duration: Number,
+                subtitles: [ String ]
+            }
+        }]
     }],
     rating: {
-        averageScore: Number
+        averageScore: Number,
+        total: Number,
+        rating5Star: Number,
+        rating4Star: Number,
+        rating3Star: Number,
+        rating2Star: Number,
+        rating1Star: Number,
     },
     releasedDate: {
         type: Date,
@@ -60,6 +88,10 @@ var CourseSchema = mongoose.Schema({
     	default: new Date()
     }
 })
+
+CourseSchema.methods.add = function() {
+
+}
 
 
 module.exports = mongoose.model('Course', CourseSchema)
