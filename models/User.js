@@ -16,13 +16,20 @@ var UserSchema = mongoose.Schema({
         email: String
     },
 	firstName: {
-		type: String
+		type: String,
+		//require: true
 	},
 	lastName: {
-		type: String
+		type: String,
+		//require: true
 	},
 	middleInitial: {
 		type: String
+	},
+	urlTitle: {
+		type: String,
+		//require: true,
+		//unique: true
 	},
     avatar: { // link to avatar
         type: String

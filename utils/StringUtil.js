@@ -13,7 +13,7 @@ module.exports = {
 
     getUrlTitle: function (title) {
         var tmp = this.convertToViString(title)
-        tmp = tmp.replace(/\s|\//g, '-')
+        tmp = tmp.replace(/\s|\/|:/g, '-')
         return tmp.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
     }
 }

@@ -86,7 +86,39 @@ var ResultHash = {
 			vi: 'Tiêu đề đã tồn tại!',
 			en: 'Dupilcate title!'
 		}	
-	}
+	},
+	'SubjectNotExisted': {
+		code: 'SubjectNotExisted',
+		status: 404,
+		message: {
+			vi: 'Lĩnh vực không tồn tại!',
+			en: 'Subject is not existed!'
+		}
+	},
+	'TopicNotExisted': {
+		code: 'TopicNotExisted',
+		status: 404,
+		message: {
+			vi: 'Chủ đề không tồn tại!',
+			en: 'Topic is not existed!'
+		}
+	},
+	'CourseNotExisted': {
+		code: 'CourseNotExisted',
+		status: 404,
+		message: {
+			vi: 'Khóa học không tồn tại!',
+			en: 'Course is not existed!'
+		}
+	},
+	'CourseNotFound': {
+		code: 'CourseNotFound',
+		status: 404,
+		message: {
+			vi: 'Không tìm thấy khóa học tương thích!',
+			en: 'Course not found!'
+		}
+	} 
 }
 
 module.exports = ResultHash

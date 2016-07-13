@@ -1,15 +1,25 @@
-var mongoose = require('mongoose')
+var async       = require('async')
+var mongoose    = require('mongoose')
+var Subject     = require('../models/Subject')
+var Topic       = require('../models/Topic')
+var Author      = require('../models/User')
+var Result      = require('../models/Result')
+
+var StringUtils = require('../utils/StringUtil')
+
 
 var CourseSchema = mongoose.Schema({
     subject: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject',
         required: true
     },
     topic: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic',
         required: true
     },
-    author: [{ 
+    authors: [{ 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User' 
     }],
@@ -70,6 +80,7 @@ var CourseSchema = mongoose.Schema({
             }
         }]
     }],
+    text: String,
     rating: {
         averageScore: Number,
         total: Number,
@@ -89,8 +100,79 @@ var CourseSchema = mongoose.Schema({
     }
 })
 
-CourseSchema.methods.add = function() {
+// add a text index to the tags array 
+CourseSchema.index({ 'text': 'text' })
 
+CourseSchema.pre('validate', function(next) {
+    if (this.urlTitle == undefined || this.urlTitle == '')
+        this.urlTitle = StringUtils.getUrlTitle(this.title)
+    this.text = StringUtils.convertToViString(this.title) + ' ' + StringUtils.convertToViString(this.description)
+    var newCourse = this
+    
+    async.parallel([
+        function(cb) { // check title
+            newCourse.model('Course').find({ 'urlTitle': newCourse.urlTitle }, function(err, result) {
+                if (err)
+                    return cb(Result.DBError)
+                if (result && result.length > 0)
+                    return cb(Result.DuplicateTitle)
+                return cb(null)
+            })
+        },
+        function(cb) { // check subject
+            Subject.findById(newCourse.subject, function(err, subject) {
+                if (err)
+                    return cb(Result.DBError)
+                if (subject == null)
+                    return cb(Result.SubjectNotExisted)
+                newCourse.text += ' ' + StringUtils.convertToViString(subject.title.vi);
+                return cb(null)
+            })
+        },
+        function(cb) { // check topic
+            Topic.findById(newCourse.topic, function(err, topic) {
+                if (err)
+                    return cb(Result.DBError)
+                if (topic == null)
+                    return cb(Result.TopicNotExisted)
+                newCourse.text += ' ' + StringUtils.convertToViString(topic.title.vi);
+                return cb(null)
+            })
+        },
+        function(cb) { // check authors
+            return cb(null)
+        }
+    ], function(err, result) {
+        next(err)
+    })
+})
+
+CourseSchema.statics.getByTitle = function(title, callback) {
+    var self = this
+    self.model('Course')
+    .find({ 'urlTitle': title })
+    .populate('subject')
+    .populate('topic')
+    .populate('authors')
+    .exec(function(err, courses) {
+        if (err)
+            return callback(Result.DBError)
+        if (courses == null || courses.length == 0)
+            return callback(Result.CourseNotExisted)
+        return callback(null, courses[0])
+    })
+}
+
+CourseSchema.statics.search = function(text, callback) {
+    var textSearch = StringUtils.convertToViString(text)
+    var self = this
+    self.model('Course').find({ $text: { $search: textSearch }}, function(err, courses) {
+        if (err)
+            return callback(Result.DBError)
+        if (courses == null || courses.length == 0)
+            return callback(Result.CourseNotFound)
+        return callback(null, courses)  
+    })
 }
 
 

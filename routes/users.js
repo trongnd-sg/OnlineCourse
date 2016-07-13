@@ -1,9 +1,20 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var User    = require('../models/User')
+var Result  = require('../models/Result')
 
-/* GET users listing. */
+var router  = express.Router()
+
+/**
+ *  GET users listing. 
+ */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+  User.find({}, function(err, users) {
+    if (err) {
+      res.status(Result.DBError.status).json(Result.DBError)
+      return
+    }
+    res.json(users)
+  })
+})
 
-module.exports = router;
+module.exports = router
