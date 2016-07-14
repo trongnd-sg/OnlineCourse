@@ -14,6 +14,8 @@ var subjects     = require('./routes/subjects')
 var topics       = require('./routes/topics')
 var courses      = require('./routes/courses')
 
+var admin        = require('./routes/admin')
+
 var app          = express();
 
 // view engine setup
@@ -32,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 mongoose.connect(require('./config/db.js').url)
 
 app.use('/', routes)
+app.use('/admin', admin)
 app.use('/setup', setup)
 
 app.use('/api/auth', auth)

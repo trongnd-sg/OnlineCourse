@@ -32,17 +32,28 @@ var TopicSchema = mongoose.Schema({
     }
 })
 
+TopicSchema.statics.generateUrlTitle = function(title, suffix, callback) {
+	var self = this.model('Topic')
+    var urlTitle = title
+	if (suffix >= 0) urlTitle += '-' + suffix 
+	self.find({ 'urlTitle': urlTitle }, function(err, topics) {
+		if (err) {
+			console.log('GenerateURLName:', err)
+			return callback(Result.DBError)
+		}
+		if (topics && topics.length > 0) {
+			return self.generateUrlTitle(urlTitle, suffix + 1, callback)
+		}
+		return callback(null, urlTitle)
+	})
+}
+
 TopicSchema.methods.add = function(callback) {
-    if (this.urlTitle == undefined || this.urlTitle == '')
-        this.urlTitle = StringUtils.getUrlTitle(this.title.vi)
-        var topic =this
+    var self = this
     async.waterfall([
         function(cb) {
-            topic.model('Topic').find({ 'urlTitle': topic.urlTitle }, function(err, result) {
-                if (err)
-                    return cb(Result.DBError)
-                if (result && result.length > 0)
-                    return callback(Result.DuplicateTitle)
+            self.model('Topic').generateUrlTitle(StringUtils.getUrlTitle(this.title.vi), -1, function(err, urlTitle) {
+                self.urlTitle = urlTitle
                 return cb(null)
             })
         },
@@ -56,7 +67,7 @@ TopicSchema.methods.add = function(callback) {
             })
         },
         function(subject, cb) {
-            topic.save(function(err, savedTopic) {
+            self.save(function(err, savedTopic) {
                 if (err)
                     return cb(Result.DBError)
                 return cb(null, subject, savedTopic)

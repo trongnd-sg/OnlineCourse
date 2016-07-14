@@ -34,23 +34,40 @@ var SubjectSchema = mongoose.Schema({
     }
 })
 
+SubjectSchema.statics.generateUrlTitle = function(title, suffix, callback) {
+	var self = this.model('Subject')
+    var urlTitle = title
+	if (suffix >= 0) urlTitle += '-' + suffix 
+	self.find({ 'urlTitle': urlTitle }, function(err, subjects) {
+		if (err) {
+			console.log('GenerateURLName:', err)
+			return callback(Result.DBError)
+		}
+		if (subjects && subjects.length > 0) {
+			return self.generateUrlTitle(urlTitle, suffix + 1, callback)
+		}
+		return callback(null, urlTitle)
+	})
+}
+
 SubjectSchema.methods.add = function(callback) {
-    if (this.urlTitle == undefined || this.urlTitle == '')
-        this.urlTitle = StringUtils.getUrlTitle(this.title.vi)
-    var newSubject = this
-    this.model('Subject').find({ 'urlTitle': this.urlTitle }, function(err, subject) {
-        if (err) {
-            return callback(Result.DBError)
+    var self = this
+    async.waterfall([
+        function(cb) {
+            self.model('Subject').generateUrlTitle(StringUtils.getUrlTitle(this.title.vi), -1, function(err, urlTitle) {
+                self.urlTitle = urlTitle
+                return cb(null)
+            })
+        },
+        function(cb) {
+            self.model('Subject').save(function(err, subject) {
+                if (err)
+                    return callback(Result.DBError)
+                return callback(null, subject)
+            })
         }
-        if (subject && subject.length > 0) {
-            return callback(Result.DuplicateTitle)
-        }
-        newSubject.save(function(err2, result) {
-            if (err2) {
-                return callback(Result.DBError)
-            }
-            return callback(null, result)
-        })
+    ], function(err, result) {
+        callback(err, result)
     })
 }
 
