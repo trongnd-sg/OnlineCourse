@@ -1,0 +1,373 @@
+@import url(http://fonts.googleapis.com/css?family=Exo+2:300);
+@import url(http://fonts.googleapis.com/css?family=Zeyada);
+
+.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12,.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12,.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12,.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{position:relative;padding: 0;}
+
+.row{
+	margin:0px;
+}
+
+html, body {
+}
+.background-logo{
+	background-color:#f1f1f1;
+	text-align:center;
+}
+.background-top-blue{
+	background-color:#1755a6;
+	height: 97px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#fff;
+	padding-top: 15px;
+}
+#top a{
+	color:#FFF;
+}
+#top-search-input {
+	margin:0;
+	margin-top: 10px;
+	padding: 0;
+}
+
+#top-search-input .search-query {
+	padding-right: 3px;
+	padding-right: 4px \9;
+	padding-left: 3px;
+	padding-left: 4px \9;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#top-search-input button {
+	border: 0;
+	background: none;
+	/** belows styles are working good */
+	padding: 2px 5px;
+	margin-top: 2px;
+	position: relative;
+	left: -28px;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color:#ccc;
+	z-index:5;
+}
+
+.search-query:focus + button {
+	z-index: 3;   
+}
+.login{
+	padding-right:70px; 
+	padding-left:30px;
+}
+.login-box{
+	background-color:#94d4ed;
+	color:#1755a6 !important;
+	margin-top:10px;
+	padding:5px 5px;
+	width:150px;
+	text-align:center;
+	height:34px;
+}
+#login .a{
+	background-color:#94d4ed;
+	color:#1755a6 !important;
+	margin-top:10px;
+	padding:5px 30px;
+	width:200px;
+}
+.social-box{
+	border:1px solid #fff;
+	margin-top:10px;
+	padding:5px;
+	width:200px;
+	text-align:center;
+	height:34px;
+}
+.social-btn{
+	background:none;
+	padding: 0px 5px;
+}
+.mail{
+	padding-left:50px
+}
+.header{
+	background-color:#1755a6;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#fff;
+	padding:5px;
+	text-align:center;
+	text-transform:uppercase;
+}
+.background-gray{
+	background-color:#f1f1f1;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	padding:10px 50px;
+	line-height:30px;
+	height:400px;
+}
+.dialog{
+	padding: 10px 50px;
+}
+.checkbox .character-checkbox {
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	vertical-align: middle;
+	display: inline-block;
+}
+.button-red{
+	text-align:center;
+	text-transform:uppercase;
+	color:#fff;
+	background-color:#d6363e;	
+}
+.footer{
+	padding-left:15px;
+	padding-top:20px;
+	line-height:30px;
+}
+.background-footer{
+	background-color:#1755a6;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#fff;
+	padding-top: 15px;
+}
+#footer a{
+	color:#fff;
+}
+.copyright{
+	padding-left:50px;
+}
+.background-banner-main{
+	background-color:#15408e;
+	background-image:url(../../images/backgound-main.png);
+	background-repeat:no-repeat;
+	height:auto;
+	min-height:250px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#fff;
+	padding-bottom: 15px;
+	padding-top:50px;
+}
+.teacher-name{
+	text-transform:uppercase;
+	line-height:30px;
+	font-size:18px;
+}
+#main-search-input {
+	margin:0;
+	margin-top: 10px;
+	padding: 0;
+}
+
+#main-search-input .search-query {
+	padding-right: 3px;
+	padding-right: 4px \9;
+	padding-left: 30px;
+	padding-left: 31px \9;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 0px;
+	border-bottom: 3px solid #fff;
+	background:none;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	box-shadow: none;
+	height:60px;
+	color:#fff;
+	font-size:18px;
+}
+
+#main-search-input button {
+	border: 0;
+	background: none;
+	/** belows styles are working good */
+	padding: 2px 5px;
+	margin-top: 2px;
+	margin-bottom:15px;
+	position: relative;
+	left: 25px;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color:#ccc;
+	z-index:5;
+	font-size:30px;
+}
+.banner-content{
+	padding: 0px 60px 0px 30px;
+}
+
+
+@media screen and (max-width: 1250px){
+	.social-box{
+		border:1px solid #fff;
+		margin-top:10px;
+		margin-right:-10px;
+		padding:5px;
+		width:200px;
+	}
+	.login{
+		padding-right:25px; 
+		padding-left:10px;
+	}
+	.mail{
+		padding-left:50px
+	}
+	.banner-content{
+		padding: 0px 20px;
+	}
+
+}
+@media screen and (max-width: 1100px){
+	.social-box{
+		border:1px solid #fff;
+		margin-top:10px;
+		padding:5px;
+		width:90%;
+	}
+	.login{
+		padding-right:25px; 
+		padding-left:10px;
+	}
+	.mail{
+		padding-left:10px
+	}
+	.banner-content{
+		padding: 0px 20px;
+	}
+
+}
+@media screen and (max-width: 996px){
+	.hide-test-m{
+		display: none;
+	}
+	.social-box{
+		border:1px solid #fff;
+		margin-top:10px;
+		padding:5px;
+		width:100%;
+	}
+	.social-btn{
+		background:none;
+		padding: 0px;
+	}
+	.background-gray{
+		background-color:#f1f1f1;
+		font-family:Arial, Helvetica, sans-serif;
+		color:#333;
+		padding:10px 15px;
+		line-height:30px;
+	}
+	.mail{
+		padding-left:10px
+	}
+	.banner-content{
+		padding: 0px 20px;
+	}
+}
+@media screen and (max-width: 780px){
+	#top-search-input {
+		margin-left:10px;
+		margin-top: 0px;
+	}
+	.login-box{
+	  margin-top:10px;
+	  margin-left:0px
+	  padding:5px 30px;
+	  width:200%;
+  	}
+	.login{
+		padding-right:25px; 
+		padding-left:10px;
+	}
+	.mail{
+		padding-left:10px
+	}
+	.social-box{
+		border:1px solid #fff;
+		margin-top:10px;
+		padding:5px;
+		width:100%;
+		display: none;
+	}
+	.social-btn{
+		background:none;
+		padding: 0px;
+	}
+	.background-gray{
+		background-color:#f1f1f1;
+		font-family:Arial, Helvetica, sans-serif;
+		color:#333;
+		padding:10px 15px;
+		line-height:30px;
+	}
+	.dialog{
+	padding: 10px 20px;
+	}
+	.banner-content{
+		padding: 0px 20px;
+	}
+	
+}
+@media screen and (max-width: 765px){
+	#top-search-input {
+		margin-left:10px;
+		margin-top: 0px;
+	}
+	.login-box{
+	  margin-top:10px;
+	  margin-left:0px
+	  padding:5px 30px;
+	  width:100%;
+  	}
+	.login{
+		padding-right:25px; 
+		padding-left:10px;
+	}
+	.mail{
+		padding-left:10px
+	}
+	.social-box{
+		border:1px solid #fff;
+		margin-top:10px;
+		padding:5px;
+		width:100%;
+		display: none;
+	}
+	.social-btn{
+		background:none;
+		padding: 0px;
+	}
+	.background-gray{
+		background-color:#f1f1f1;
+		font-family:Arial, Helvetica, sans-serif;
+		color:#333;
+		padding:10px 15px;
+		line-height:30px;
+	}
+	.dialog{
+	padding: 10px 10px
+	}
+	.banner-content{
+		padding: 0px 15px;
+	}
+	
+	
+}

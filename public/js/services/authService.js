@@ -10,7 +10,7 @@ angular.module('courseApp.services')
    *  token: 'access token' // in case facebook or google login
    * }
    */
-  var login = function(loginInfo) {
+  this.login = function(loginInfo) {
     var deferred = $q.defer()
     $http({
       method: 'POST',
@@ -18,6 +18,7 @@ angular.module('courseApp.services')
       data: loginInfo
     }).success(function(response) {
       $window.localStorage.setItem(config.LOCAL_TOKEN_KEY, response.token)
+      $window.localStorage.setItem(config.LOCAL_USER_KEY, JSON.stringify(response.user))
       deferred.resolve(response)
     }).error(function(data, status, headers, cfg) {
       deferred.reject(data)
@@ -25,19 +26,20 @@ angular.module('courseApp.services')
     return deferred.promise
   }
 
-  var logout = function() {
+  this.logout = function() {
     $window.localStorage.removeItem(config.LOCAL_TOKEN_KEY)
+    $window.localStorage.removeItem(config.LOCAL_USER_KEY)
   }
 
-  var isAuthenticated = function() {
+  this.isAuthenticated = function() {
     var token = $window.localStorage.getItem(config.LOCAL_TOKEN_KEY)
     console.log('Token:', token)
     return (token)// !== undefined && token !== null
   }
- 
-  return {
-    login: login,
-    logout: logout,
-    isAuthenticated: isAuthenticated
+
+  this.getUser = function() {
+    var user = JSON.parse($window.localStorage.getItem(config.LOCAL_USER_KEY))
+    console.log('User:', user)
+    return user
   }
 })

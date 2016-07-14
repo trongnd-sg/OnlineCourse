@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="courseApp">
   <head>
+    <base href="/" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -25,13 +26,18 @@
     <!-- App scripts -->
     <script src="/js/adm/app.js"></script>
     <script src="/js/adm/config.js"></script>
+    <script src="/js/adm/utils.js"></script>
     
     <!-- controllers -->
     <script src="/js/adm/controllers.js"></script>
+    <script src="/js/adm/home/dashboardCtrl.js"></script>
+    <script src="/js/adm/courses/coursesCtrl.js"></script>
+    <script src="/js/adm/courses/courseCtrl.js"></script>
 
     <!-- services -->
     <script src="/js/services/services.js"></script>
     <script src="/js/services/authService.js"></script>
+    <script src="/js/services/courseService.js"></script>
   </head>
 
   <body class="nav-md">
@@ -66,16 +72,16 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href ui-sref="home">Dashboard</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Courses <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Subjects</a></li>
-                      <li><a href="form_advanced.html">Topics</a></li>
-                      <li><a href="form_validation.html">Courses</a></li>
-                      <li><a href="form_wizards.html">Learning Path</a></li>
-                      <li><a href="form_upload.html">Authors</a></li>
+                      <li><a href ui-sref="subjects">Subjects</a></li>
+                      <li><a href ui-sref="topics">Topics</a></li>
+                      <li><a href ui-sref="courses">Courses</a></li>
+                      <li><a href ui-sref="paths">Learning Path</a></li>
+                      <li><a href ui-sref="authors">Authors</a></li>
                     </ul>
                   </li>
                   <!--
@@ -279,7 +285,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" ui-view>
         </div>
         <!-- /page content -->
 

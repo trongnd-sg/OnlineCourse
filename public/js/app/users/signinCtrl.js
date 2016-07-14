@@ -1,8 +1,31 @@
 angular.module('courseApp.controllers')
 
-.controller('authCtrl', function($scope, config, AuthService) {
-	
-	$scope.facebookLogin = function () {
+.controller('SignInCtrl', function($scope, $state, config, AuthService) {
+
+	$scope.userInfo = {
+		name: '',
+		email: '',
+		password: ''
+	}
+
+	var initialize = function() {
+		console.log('SignInCtrl is loaded.')
+	}
+
+	$scope.localLogin = function() {
+		AuthService.login({
+			method: 'local',
+			email: $scope.userInfo.email,
+			password: $scope.userInfo.password
+		}).then(function(response) {
+			console.log(response)
+			$state.go('home')
+		}).catch(function(error) {
+			console.log(error)
+		})
+	}
+
+	$scope.facebookLogin = function() {
 		FB.login(function(response) {
 	  		if (response.authResponse) {
       			console.log('Facebook token:', response.authResponse)
@@ -11,6 +34,7 @@ angular.module('courseApp.controllers')
 					token: response.authResponse.accessToken
 				}).then(function(response) {
 					console.log(response)
+					$state.go('home')
 				}).catch(function(error) {
 					console.log(error)
 				})
@@ -33,14 +57,11 @@ angular.module('courseApp.controllers')
 				token: authResponse.access_token
 			}).then(function(response) {
 				console.log(response)
+				$state.go('home')
 			}).catch(function(error) {
 				console.log(error)
 			})
 		})
-	}
-
-	var initialize = function() {
-		console.log('authCtrl is loaded.')
 	}
 
 	initialize()

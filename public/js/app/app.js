@@ -1,11 +1,32 @@
-angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config'])
+angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'ui.router'])
 
 .run(function() {
 	console.log('Angular is running.')
 })
 
-.config(function($httpProvider, config) {
+.config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, config) {
   console.log('Angular is configuring.')
+  /**
+   * Configure routing
+   */
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
+  .state('home', {
+    url: '/',
+    templateUrl: 'js/app/courses/home.html',
+    controller: 'HomeCtrl'
+  })
+  .state('signin', {
+    url: '/dang-nhap',
+    templateUrl: 'js/app/users/signin.html',
+    controller: 'SignInCtrl'
+  })
+  ;
+
+  // Disable html5Mode
+	$locationProvider.html5Mode(false);
+	$locationProvider.hashPrefix('!');
+
   /**
    * configure HTTP Provider
    */

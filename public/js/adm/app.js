@@ -1,4 +1,4 @@
-angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'ui.router'])
+angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router'])
 
 .config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, config) {
   console.log('Angular is configuring.')
@@ -9,12 +9,22 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   $stateProvider
   .state('home', {
     url: '/',
-    templateUrl: 'adm/home/dashboard.html',
+    templateUrl: 'js/adm/home/dashboard.html',
     controller: 'DashboardCtrl'
   })
   .state('courses', {
     url: '/courses',
-    templateUrl: 'adm/courses/courses.html',
+    templateUrl: 'js/adm/courses/courses.html',
+    controller: 'CoursesCtrl'
+  })
+  .state('newcourse', {
+    url: '/courses',
+    templateUrl: 'js/adm/courses/course.html',
+    controller: 'CourseCtrl'
+  })
+  .state('editcourse', {
+    url: '/courses/:courseId',
+    templateUrl: 'js/adm/courses/course.html',
     controller: 'CourseCtrl'
   })
   ;
