@@ -9,7 +9,13 @@ angular.module('courseApp.controllers')
           //file: "/upload/courses/5786111af5a2ff88245dae82.mp4",
           //width: "720",
           //height: "480",
-          primary: "flash"
+          primary: "flash",
+		  events: {
+			onReady: function () { 
+				this.play(); 
+				this.pause(); 
+			}
+		  }
         })
 
 		$(document).ready(function () {
