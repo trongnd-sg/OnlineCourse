@@ -168,33 +168,66 @@ CourseSchema.statics.search = function(searchContext, callback) {
     var query = (searchContext.text && searchContext.text.length > 0) ? 
 						self.find({ $text: { $search: StringUtils.convertToViString(searchContext.text) }}) : 
 						self.find({})
+    var countQuery = (searchContext.text && searchContext.text.length > 0) ? 
+						self.find({ $text: { $search: StringUtils.convertToViString(searchContext.text) }}) : 
+						self.find({})
     
-    if (searchContext.free)
+    if (searchContext.free) {
         query = query.where('isFree', true)
-
-    if (searchContext.subject)
-        query = query.where('subject', searchContext.subject)
-
-    if (searchContext.topic)
-        query = query.where('topic', searchContext.topic)
-
-    if (searchContext.page && searchContext.size) {
-	    query = query.skip((parseInt(searchContext.page) - 1) * parseInt(searchContext.size))
-		query = query.limit(parseInt(searchContext.size))
+        countQuery = countQuery.where('isFree', true)
     }
 
-    if (searchContext.order && 2 == parseInt(searchContext.order))
+    if (searchContext.subject) {
+        query = query.where('subject', searchContext.subject)
+        countQuery = countQuery.where('subject', searchContext.subject)
+    }
+
+    if (searchContext.topic) {
+        query = query.where('topic', searchContext.topic)
+        countQuery = countQuery.where('topic', searchContext.topic)
+    }
+
+    if (searchContext.page && searchContext.size) {
+	    query = query.skip((searchContext.page - 1) * searchContext.size)
+		query = query.limit(searchContext.size)
+    }
+
+    if (searchContext.order && 2 == searchContext.order)
         query = query.sort('-rating.total')
     else
         query = query.sort('-released')
     
-    query.exec(function(err, courses) {
+    async.parallel([
+        function(cb) {
+            query.exec(function(err, courses) {
+                if (err)
+                    return cb(Result.DBError)
+                if (courses == null || courses.length == 0)
+                    return cb(Result.CourseNotFound)
+                return cb(null, courses)  
+            })
+        },
+        function(cb) {
+            countQuery.count(function(err, total) {
+                if (err)
+                    return cb(Result.DBError)
+                return cb(null, total)
+            })
+        }
+    ], function(err, result) {
         if (err)
-            return callback(Result.DBError)
-        if (courses == null || courses.length == 0)
-            return callback(Result.CourseNotFound)
-        return callback(null, courses)  
+            return callback(err)
+        return callback(null, result[0], result[1])
     })
+}
+
+CourseSchema.methods.toJSON = function() {
+	var obj = this.toObject()
+	obj.created = obj.created.getTime()
+    delete obj.__v
+    if (obj.text)
+        delete obj.text
+	return obj
 }
 
 

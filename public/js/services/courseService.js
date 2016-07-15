@@ -1,6 +1,6 @@
 angular.module('courseApp.services')
  
-.service('CourseService', function($q, $http, config) {
+.service('CourseService', function($q, $http, config, ParamBuilder) {
 
   this.getById = function(courseId) {
     var deferred = $q.defer()
@@ -16,7 +16,7 @@ angular.module('courseApp.services')
   }
 
   this.search = function(searchContext) {
-    var q = ''
+    var q = ParamBuilder.build(searchContext)
     var deferred = $q.defer()
     $http({
       method: 'GET',

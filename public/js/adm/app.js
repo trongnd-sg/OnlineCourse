@@ -17,12 +17,12 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     templateUrl: 'js/adm/courses/courses.html',
     controller: 'CoursesCtrl'
   })
-  .state('newcourse', {
+  .state('new-course', {
     url: '/courses',
     templateUrl: 'js/adm/courses/course.html',
     controller: 'CourseCtrl'
   })
-  .state('editcourse', {
+  .state('edit-course', {
     url: '/courses/:courseId',
     templateUrl: 'js/adm/courses/course.html',
     controller: 'CourseCtrl'

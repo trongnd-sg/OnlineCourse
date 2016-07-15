@@ -1,4 +1,4 @@
-angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'ui.router'])
+angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router'])
 
 .run(function() {
 	console.log('Angular is running.')
@@ -30,6 +30,16 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     url: '/khoa-hoc/:courseId',
     templateUrl: 'js/app/courses/course.html',
     controller: 'CourseCtrl'
+  })
+  .state('author', {
+    url: '/giang-vien/:authorId',
+    templateUrl: 'js/app/users/author.html',
+    controller: 'AuthorCtrl'
+  })
+  .state('subject', {
+    url: '/linh-vuc/:subjectId',
+    templateUrl: 'js/app/courses/subject.html',
+    controller: 'SubjectCtrl'
   })
   ;
 

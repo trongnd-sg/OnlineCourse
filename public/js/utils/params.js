@@ -11,5 +11,5 @@ angular.module('courseApp.utils')
     }
     return params
   }
-  return buidler
+  return builder
 })

@@ -4,7 +4,9 @@
     <title>EDU247 - Ai cũng có thể học</title>
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/libs/bootstrap-3.3.6/fonts/glyphicons-halflings-regular.ttf" media="screen">    
+    <!--
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.6/fonts/glyphicons-halflings-regular.ttf" media="screen">
+    -->    
     <link rel="stylesheet" href="/libs/bootstrap-3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/libs/bootstrap-3.3.6/css/bootstrap-theme.min.css">
     <link rel='stylesheet' href='/css/edu.css' />
@@ -22,14 +24,10 @@
     <!-- App scripts -->
     <script src="/js/app/app.js"></script>
     <script src="/js/app/config.js"></script>
-    
-    <!-- controllers -->
-    <script src="/js/app/controllers.js"></script>
-    <script src="/js/app/mainCtrl.js"></script>
-    <script src="/js/app/users/signinCtrl.js"></script>
-    <script src="/js/app/courses/homeCtrl.js"></script>
-    <script src="/js/app/courses/searchCtrl.js"></script>
-    
+    <script src="/js/app/utils.js"></script>
+
+    <!-- App Utils -->
+    <script src="/js/utils/params.js"></script>
 
     <!-- services -->
     <script src="/js/services/services.js"></script>
@@ -37,6 +35,18 @@
     <script src="/js/services/userService.js"></script>
     <script src="/js/services/courseService.js"></script>
     <script src="/js/services/pathService.js"></script>
+    <script src="/js/services/subjectService.js"></script>
+    
+    <!-- controllers -->
+    <script src="/js/app/controllers.js"></script>
+    <script src="/js/app/mainCtrl.js"></script>
+    <script src="/js/app/users/signinCtrl.js"></script>
+    <script src="/js/app/users/authorCtrl.js"></script>
+    <script src="/js/app/courses/homeCtrl.js"></script>
+    <script src="/js/app/courses/searchCtrl.js"></script>
+    <script src="/js/app/courses/courseCtrl.js"></script>
+    <script src="/js/app/courses/subjectCtrl.js"></script>
+
 
     <script>
       window.fbAsyncInit = function() {
@@ -62,7 +72,9 @@
     <!--banner top-->
 	  <div class="row">
    	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
-   	  	<img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
+        <a href ui-sref="home">
+   	  	  <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
+        </a>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:right" >
         <img src="images/angle.png" width="68" height="97" />
@@ -74,7 +86,7 @@
                   <div class="input-group col-md-12">
                       <input type="text" class=" search-query form-control" placeholder="Search" ng-model="txtSearch" />
                       <span class="input-group-btn">
-                          <button class="btn" type="button" ng-click="search()">
+                          <button class="btn" type="button" ng-click="onSearch()">
                               <span class="glyphicon glyphicon-search"></span>
                           </button>
                       </span>
@@ -151,7 +163,7 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
-        	GIỚI THIỆU ALADA
+        	GIỚI THIỆU EDU247
             <br />
             <span class="glyphicon glyphicon-chevron-right"></span>
             <a href="#">Đăng ký khóa học</a>
@@ -220,13 +232,16 @@
     </div>
     <!--END Copyright-->
     <div id="my-video" style="display:none"></div>
+    <!--
     <script>
         jwplayer("my-video").setup({
-          file: "https://content.jwplatform.com/videos/HkauGhRi-640.mp4",
+          //file: "https://content.jwplatform.com/videos/HkauGhRi-640.mp4",
+          file: "/upload/courses/5786111af5a2ff88245dae82.mp4",
           //width: "720",
           //height: "480",
           primary: "flash"
         })
     </script>
+    -->
   </body>
 </html>

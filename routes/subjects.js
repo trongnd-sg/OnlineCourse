@@ -6,7 +6,10 @@ var router  = express.Router()
 
 
 router.get('/', function(req, res, next) {
-    Subject.find({}, function(err, subjects) {
+    Subject
+    .find({})
+    .sort('sequence')
+    .exec(function(err, subjects) {
         if (err) {
             res.status(Result.DBError.status).json(Result.DBError)
             return

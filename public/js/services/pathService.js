@@ -1,5 +1,5 @@
 angular.module('courseApp.services')
  
-.service('CourseService', function($q, $http, config) {
+.service('PathService', function($q, $http, config) {
 
 })

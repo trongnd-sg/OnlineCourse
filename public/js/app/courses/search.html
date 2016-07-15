@@ -4,6 +4,10 @@
 
 <div class="main container">
     <div class="row" ng-repeat="course in courseList">
-        <div><a href ui-sref="course({ title: courseTitle })">{{ course.title }}</a></div>
+        <div><a href ui-sref="course({ courseId: '{{ course.urlTitle }}' })">{{ course.title }}</a></div>
+        <div><a href ui-sref="course({ courseId: '{{ course._id }}' })">{{ course._id }}</a></div>
+        <div>
+            {{ course | json }}
+        </div>
     </div>
 </div>

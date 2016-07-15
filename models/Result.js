@@ -118,7 +118,15 @@ var ResultHash = {
 			vi: 'Không tìm thấy khóa học tương thích!',
 			en: 'Course not found!'
 		}
-	} 
+	},
+	'UserNotExisted': {
+		code: 'UserNotExisted',
+		status: 404,
+		message: {
+			vi: 'Người dùng không tồn tại!',
+			en: 'User is not existed!'
+		}
+	}, 
 }
 
 module.exports = ResultHash

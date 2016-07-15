@@ -110,6 +110,22 @@ UserSchema.pre('validate', function(next) {
 	})
 })
 
+UserSchema.statics.getByName = function(name, callback) {
+    var self = this
+    self.model('User')
+    .find({ 'urlName': name })
+    //.populate('subject')
+    //.populate('topic')
+    //.populate('authors')
+    .exec(function(err, authors) {
+        if (err)
+            return callback(Result.DBError)
+        if (authors == null || authors.length == 0)
+            return callback(Result.AuthorNotExisted)
+        return callback(null, authors[0])
+    })
+}
+
 /* 
  * custom to JSON
  */

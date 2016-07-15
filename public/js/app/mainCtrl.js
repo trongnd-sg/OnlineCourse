@@ -4,6 +4,7 @@ angular.module('courseApp.controllers')
 
 	$scope.isAuthenticated = false
 	$scope.user = null
+	$scope.txtSearch = ''
 
 	var initialize = function() {
 		$scope.$on(events.USER_SIGN_IN, function() {
@@ -11,12 +12,17 @@ angular.module('courseApp.controllers')
 			$scope.user = AuthService.getUser()
 		})
 
-		console.log('authCtrl is loaded.')
+		$scope.$on(events.USER_SIGN_OUT, function() {
+			$scope.isAuthenticated = false
+			$scope.user = null
+		})
+
+		console.log('MainCtrl is loaded.')
 	}
 
-	$scope.search = function() {
-		if ($state.name && $state.name == 'search') {
-			$scope.broadcast(events.SEARCH_TEXT_CHANGED)
+	$scope.onSearch = function() {
+		if (($state.name && $state.name === 'search') || ($state.current.name === 'search')) {
+			$scope.$broadcast(events.SEARCH_TEXT_CHANGED)
 			return
 		}
 		$state.go('search')

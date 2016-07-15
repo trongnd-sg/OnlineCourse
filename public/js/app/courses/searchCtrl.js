@@ -4,10 +4,14 @@ angular.module('courseApp.controllers')
 	
 	var initialize = function() {
 		console.log('SearchCtrl is loaded.')
+		$scope.$on(events.SEARCH_TEXT_CHANGED, function() {
+			$scope.search()
+		})
+		$scope.search()
 	}
 
 	$scope.paging = {
-		page: 0,
+		page: 1,
 		size: 20,
 		total: 0
 	}
@@ -26,7 +30,7 @@ angular.module('courseApp.controllers')
 		}
 		CourseService.search(searchCtx).then(function(response) {
 			$scope.courseList = response.courses
-			$scope.paging.total = response.count
+			$scope.paging.total = response.total
 		}).catch(function(error) {
 
 		})

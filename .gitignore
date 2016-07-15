@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+# mp4 files
+*.mp4
+
 # Runtime data
 pids
 *.pid

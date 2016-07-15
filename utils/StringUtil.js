@@ -15,5 +15,13 @@ module.exports = {
         var tmp = this.convertToViString(title)
         tmp = tmp.replace(/\s|\/|:/g, '-')
         return tmp.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+    },
+
+    /**
+     * check if input string is hexadecial
+     */
+    isHex: function(h) {
+        var regexHex = /[0-9A-Fa-f]{6}/g
+        return regexHex.test(h)
     }
 }
