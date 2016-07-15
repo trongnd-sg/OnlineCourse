@@ -1,91 +1,41 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>EDU247 - Ai cũng có thể học</title>
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css">
-    <!--
-    <link rel="stylesheet" href="/libs/bootstrap-3.3.6/fonts/glyphicons-halflings-regular.ttf" media="screen">
-    -->    
-    <link rel="stylesheet" href="/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/libs/bootstrap-3.3.6/css/bootstrap-theme.min.css">
-    <link rel='stylesheet' href='/css/edu.css' />
-
-    <!-- Vendor JS libs -->
-    <script src="//apis.google.com/js/client.js"></script>
-    <script src="//content.jwplatform.com/libraries/frRB7BnA.js"></script>
-
-    <!-- libs -->
-    <script src="/libs/jquery/jquery-1.12.4.min.js"></script>
-    <script src="/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-    <script src="/libs/angular/angular-1.5.7.min.js"></script>
-    <script src="/libs/angular/angular-ui-router-0.2.18.min.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yet another megamenu for Bootstrap 3">
+    <meta name="author" content="@geedmo">
+<title>EDU247 - Ai cũng có thể học</title>
+    <!-- Bootstrap and demo CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+    <link href="bootstrap/fonts/glyphicons-halflings-regular.ttf" rel="stylesheet" media="screen">    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="bootstrap/css/edu.css" rel="stylesheet">      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
-    <!-- App scripts -->
-    <script src="/js/app/app.js"></script>
-    <script src="/js/app/config.js"></script>
-    <script src="/js/app/utils.js"></script>
-
-    <!-- App Utils -->
-    <script src="/js/utils/params.js"></script>
-
-    <!-- services -->
-    <script src="/js/services/services.js"></script>
-    <script src="/js/services/authService.js"></script>
-    <script src="/js/services/userService.js"></script>
-    <script src="/js/services/courseService.js"></script>
-    <script src="/js/services/pathService.js"></script>
-    <script src="/js/services/subjectService.js"></script>
-    
-    <!-- controllers -->
-    <script src="/js/app/controllers.js"></script>
-    <script src="/js/app/mainCtrl.js"></script>
-    <script src="/js/app/users/signinCtrl.js"></script>
-    <script src="/js/app/users/authorCtrl.js"></script>
-    <script src="/js/app/courses/homeCtrl.js"></script>
-    <script src="/js/app/courses/searchCtrl.js"></script>
-    <script src="/js/app/courses/courseCtrl.js"></script>
-    <script src="/js/app/courses/subjectCtrl.js"></script>
-
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '<%= oauth.facebook.app_id %>',
-          xfbml      : true,
-          version    : 'v2.6'
-        })
-      };
-
-      // Load the SDK asynchronously
-      // JS SDK - this will be loaded asynchronously
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      } (document, 'script', 'facebook-jssdk'));
-    </script>
-  </head>
-  <body ng-app="courseApp" ng-controller="MainCtrl">
-    <!--banner top-->
+</head>
+	
+<body>
+	<!--banner top-->
 	<div class="row">
    	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
-        <a ui-sref="home">
-   	  	  <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" />
-        </a>
+   	  	<img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
       </div>
       <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:right" >
         <img src="images/angle.png" width="68" height="97" />
       </div>
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
+      	<!--Search-->
       	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-        	<div id="top-search-input" style="color:#999" ng-hide="isHome">
-            	<form ng-submit="onSearch()">
+        	<div id="top-search-input" style="color:#999">
+            	<form>
                   <div class="input-group col-md-12">
                       <input type="search" class="search-query form-control" id="input-search" placeholder="Search" >
                       <span class="input-group-btn">
-                          <button class="btn" type="button" ng-click="onSearch()">
+                          <button class="btn" type="button">
                               <span class="glyphicon glyphicon-search"></span>
                           </button>
                       </span>
@@ -93,6 +43,7 @@
                 </form>
               </div>
         </div>
+        <!--End Search-->
         <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 login">
         	<div class="row hidden-xs" id="top" >
             	<div class="col-lg-4 col-md-4 hidden-xs hide-test-m">
@@ -109,12 +60,9 @@
             </div>
             <div class="row">
             	<div class="col-lg-4 col-md-4  col-sm-6 col-xs-12">
-                	<div class="login-box" ng-hide="isAuthenticated">
-                    	<a href ui-sref="signin">Đăng kí / Đăng nhập </a>
-                  </div>
-                  <div class="login-box" ng-show="isAuthenticated">
-                    	<a href ui-sref="profile">{{ user.name }}</a>
-                  </div>
+                	<div class="login-box" id="login">
+                    	<a>Đăng kí </a> / <a> Đăng nhập </a>
+                    </div>
                 </div>
                 <div class="col-lg-8 col-md-8  col-sm-6 hidden-xs" align="right">
                 	 <div class="social-box">
@@ -137,12 +85,86 @@
       </div>
     </div>
     <!-- End banner top-->
-
+    
+    <div class="row" style="height:32px">
+    </div>
     <!--Content-->
-    <div ui-view></div>
+    <div class="row dialog">
+    	<!--Register-->
+    	<div class="col-lg-6 col-md-6 col-sm-6 col-lg-12" style="padding:0px 15px 15px 15px">
+        	<div class="header">
+            	ĐĂNG KÝ THÀNH VIÊN
+            </div>
+            <div class="background-gray">
+            	<div align="center">
+                	Đăngg ký nhanh bằng tài khoản:
+                    <br />
+               		<a href="#" alt="Tài khoản fabook"><img src="images/btn_facebook.png" width="100" height="27"  /></a>
+                    <a href="#" alt="Tài khoản fabook"><img src="images/btn_google.png" width="100" height="27"  /></a>
+                </div>
+                <hr / style="border-top: 1px solid #ccc;">
+                <div align="center">
+                	Đăngg ký thành viên tại Edu247:
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="name" class="sr-only">Họ Tên</label>
+                            <input type="email" name="email" class="form-control" placeholder="Họ Tên">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="sr-only">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="key" class="sr-only">Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Mật khẩu">
+                        </div>
+                        <div class="checkbox" align="left" style="padding-left:20px">
+                        	<input name="" class="checkbox character-checkbox " type="checkbox" value="" />
+                            <span> Tôi muốn nhận tin tức từ Edu247</span>
+                        </div>
+                        <input type="submit" class="btn button-red" style="width:100%" value="ĐĂNG KÝ NGAY">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--END Register-->
+        <!--LOGIN-->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-lg-12" style="padding:0px 15px">
+        	<div class="header">
+            	ĐĂNG NHẬP
+            </div>
+            <div class="background-gray">
+            	<div align="center">
+                	Đăngg nhập nhanh bằng tài khoản:
+                    <br />
+               		<a href="#" alt="Tài khoản fabook"><img src="images/btn_facebook.png" width="100" height="27"  /></a>
+                    <a href="#" alt="Tài khoản fabook"><img src="images/btn_google.png" width="100" height="27"  /></a>
+                </div>
+                <hr / style="border-top: 1px solid #ccc; padding-bottom:50px">
+                <div align="center">
+                	Đăngg nhập tài khoản tại Edu247:
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="name" class="sr-only">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="key" class="sr-only">Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Mật khẩu">
+                        </div>
+                        <div class="checkbox" align="right" style="padding-left:20px">
+                            <span><a href="#">Bạn quên mật khẩu</a></span>
+                        </div>
+                        <input type="submit" class="btn button-red" style="width:100%" value="ĐĂNG KÝ NGAY">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--END login-->
+    </div>
     <!--End Content-->
-    <div class="row" style="height:32px"></div>
-
+    <div class="row" style="height:32px">
+    </div>
     <!--footer-->
     <div class="row background-footer dialog"  id="footer">
     	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer" >
@@ -229,5 +251,5 @@
          </div>
     </div>
     <!--END Copyright-->
-  </body>
+</body>
 </html>

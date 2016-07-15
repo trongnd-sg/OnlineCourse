@@ -1,4 +1,112 @@
-<!--banner-main-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yet another megamenu for Bootstrap 3">
+    <meta name="author" content="@geedmo">
+<title>EDU247 - Ai cũng có thể học</title>
+    <!-- Bootstrap and demo CSS -->
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">-->
+    <link href="bootstrap/fonts/glyphicons-halflings-regular.ttf" rel="stylesheet" media="screen">    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="bootstrap/css/edu.css" rel="stylesheet">      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+		$(document).ready(function () {
+			$('#myCarousel').carousel({
+				interval: 10000
+			})
+			$('.fdi-Carousel .item').each(function () {
+				var next = $(this).next();
+				if (!next.length) {
+					next = $(this).siblings(':first');
+				}
+				next.children(':first-child').clone().appendTo($(this));
+		
+				if (next.next().length > 0) {
+					next.next().children(':first-child').clone().appendTo($(this));
+				}
+				else {
+					$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+				}
+			});
+		});
+	</script>
+    
+</head>
+	
+<body onload="MM_preloadImages('images/icon_thietkedohoa1.png')">
+	<!--banner top-->
+	<div class="row">
+   	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
+   	  	<img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:right" >
+        <img src="images/angle.png" width="68" height="97" />
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
+      	<!--Search-->
+      	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+        	<div id="top-search-input" style="color:#999">
+            	<form>
+                  <div class="input-group col-md-12">
+                      <input type="search" class="search-query form-control" id="input-search" placeholder="Search" >
+                      <span class="input-group-btn">
+                          <button class="btn" type="button">
+                              <span class="glyphicon glyphicon-search"></span>
+                          </button>
+                      </span>
+                  </div>
+                </form>
+              </div>
+        </div>
+        <!--End Search-->
+        <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 login">
+        	<div class="row hidden-xs" id="top" >
+            	<div class="col-lg-4 col-md-4 hidden-xs hide-test-m">
+                	Have any question?
+                </div>
+                <div class="col-lg-8 col-md-8 col-xs-12 hidden-xs" align="right">
+                	<span class="glyphicon glyphicon-phone"></span>
+                	0915 743 646
+                
+                	<a href="mailto:info@edu247.com" class="mail">
+                      <span class="glyphicon glyphicon-envelope"></span>
+                      info@edu247.com</a>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-4 col-md-4  col-sm-6 col-xs-12">
+                	<div class="login-box" id="login">
+                    	<a>Đăng kí </a> / <a> Đăng nhập </a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8  col-sm-6 hidden-xs" align="right">
+                	 <div class="social-box">
+                     	<button class="btn social-btn" type="button">
+                        <img src="images/facebook.png" width="22" height="22" alt="facebook" />
+                     </button>
+                     <button class="btn social-btn" type="button">
+                        <img src="images/twitter.png" width="22" height="22" alt="facebook" />
+                     </button>
+                     <button class="btn social-btn" type="button">
+                        <img src="images/linkedin.png" width="22" height="22" alt="facebook" />
+                     </button>
+                     <button class="btn social-btn" type="button">
+                        <img src="images/youtube.png" width="22" height="22" alt="facebook" />
+                     </button>
+                     </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- End banner top-->
+    <!--banner-main-->
 	<div class="row background-banner-main">
     	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" align="center" >
         	<img src="images/teacher-image.png" width="333" height="433" />
@@ -11,16 +119,16 @@
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 banner-content">
         	<h2 align="center">Bạn muốn học gì? </h2>
             <div id="main-search-input" style="color:#fff">
-            	<form ng-submit="onSearch()">
+            	<form>
                   <div class="input-group col-md-12">
                   	  <span class="input-group-btn">
-                          <button class="btn" type="button" ng-click="onSearch()">
+                          <button class="btn" type="button">
                               <span class="glyphicon glyphicon-search"></span>
                           </button>
                       </span>
-                      <input type="text" class="search-query form-control" ng-model="txtSearch"/>
+                      <input type="text" class="  search-query form-control" />
                   </div>
-              </form>
+                 </form>
             </div>
             <div class="row" id="banner" style="padding-top:40px;">
             	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" >
@@ -99,8 +207,7 @@
         </div>
 	</div>
     <!--banner-main-->
-
-<!--tab-->
+    <!--tab-->
     <div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
             <div class="panel panel-primary">
@@ -108,12 +215,10 @@
                     <span class="col-lg-12 pull-left">
                         <!-- Tabs -->
                         <ul class="nav panel-tabs">
-                            <li class="active">
-                                <a href data-toggle="tab">Khóa học phổ biến</a>
-                            </li>
-                            <li><a href data-toggle="tab">Khóa học mới</a></li>
-                            <li><a href data-toggle="tab">Trải nghiệm khóa học</a></li>
-                            <li><a href ui-sref="path">Con đường chuyên gia</a></li>
+                            <li class="active"><a href="#phobien" data-toggle="tab">Khóa học phổ biến</a></li>
+                            <li><a href="#tab2" data-toggle="tab">Khóa học mới</a></li>
+                            <li><a href="#tab3" data-toggle="tab">Trải nghiệm khóa học</a></li>
+                            <li><a href="#">Con đường chuyên gia</a></li>
                         </ul>
                     </span>
                 </div>
@@ -327,8 +432,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info-edu247-background" id="teacher">
         	<h2>NHỮNG LỢI ÍCH ĐẠT ĐƯỢC KHI HỌC TRỰC TUYẾN EDU247</h2>
             <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
-            <div class="col-lg-6 col-sm-6 col-xs-12" style="padding:30px 0px 0px 0px" align="left" >
-                <div id="videoDiv"></div>
+            <div class="col-lg-6 col-sm-6 col-xs-12" style="padding:30px 0px 0px 0px" align="left">
+            	Clip            	
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
             	<div class="row" style="padding:30px 0px 0px 0px">
@@ -379,3 +484,93 @@
         </div>
 	</div>
     <!--End Tab-->
+    <div class="row" style="height:32px">
+    </div>
+    <!--footer-->
+    <div class="row background-footer dialog"  id="footer">
+    	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer" >
+        	DANH MỤC
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Trang chủ</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Giới thiệu</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Tin tức</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Liên hệ</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
+        	GIỚI THIỆU ALADA
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Đăng ký khóa học</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Hợp tác giảng dạy</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Chính sách bảo mật</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Điều khoản dịch vụ</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Quy chế hoạt động</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
+        	TRỢ GIÚP
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Hướng dẫn sử dụng</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Câu hỏi thường gặp</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Hướng dẫn thanh toán</a>
+            <br />
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#">Chính xác hoàn trả học phí</a>
+            <br />
+            <input type="submit" class="col-lg-4 col-sm-4 col-xs-4 btn button-red" style="height:35px; width:170px" value="HỢP TÁC GIẢNG DẠY">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
+        	KẾT NỐI - LIÊN HỆ VỚI EDU247
+            <br />
+            Thứ 2 - Thứ 6: 08:30 - 21:00
+            <br />
+            Thứ 7: 08:30 - 15:00
+            <br />
+            <span class="glyphicon glyphicon-phone"></span>
+            Hỗ trợ khách hàng 0915 743 646
+            <br />
+            <span class="glyphicon glyphicon-phone"></span>
+            Đăng ký nhận thông tin khuyến mãi:
+            <div class="form-group" style="display: inline-flex;">
+              <input type="text" class="col-lg-8 col-sm-8 col-xs-8 form-control" style="width:auto" placeholder="Nhập email">
+              <input type="submit" class="col-lg-4 col-sm-4 col-xs-4 btn button-red" style="height:35px" value="ĐĂNG KÝ">
+            </div>
+        </div>
+    </div>
+    <!--END footer-->
+    <!--Copyright-->
+    <div class="row" style="height:1px;">
+    </div>
+    <div class="row">
+    	<div class=" col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
+       	 	<span class="copyright"> Copyright 2016 Edu247.vn  -  All right reserved</span>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:left" >
+        	<img src="images/angle_bottom.png" width="68" height="97" />
+      	</div>
+         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
+            <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
+         </div>
+    </div>
+    <!--END Copyright-->
+</body>
+</html>

@@ -5,6 +5,7 @@ angular.module('courseApp.controllers')
 	$scope.isAuthenticated = false
 	$scope.user = null
 	$scope.txtSearch = ''
+	$scope.isHome = true
 
 	var initialize = function() {
 		$scope.$on(events.USER_SIGN_IN, function() {
@@ -23,9 +24,10 @@ angular.module('courseApp.controllers')
 	$scope.onSearch = function() {
 		if (($state.name && $state.name === 'search') || ($state.current.name === 'search')) {
 			$scope.$broadcast(events.SEARCH_TEXT_CHANGED)
-			return
+			return false
 		}
 		$state.go('search')
+		return false
 	}
 
 	initialize()
