@@ -21,6 +21,16 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     templateUrl: 'js/app/users/signin.html',
     controller: 'SignInCtrl'
   })
+  .state('search', {
+    url: '/tim-kiem',
+    templateUrl: 'js/app/courses/search.html',
+    controller: 'SearchCtrl'
+  })
+  .state('course', {
+    url: '/khoa-hoc/:courseId',
+    templateUrl: 'js/app/courses/course.html',
+    controller: 'CourseCtrl'
+  })
   ;
 
   // Disable html5Mode

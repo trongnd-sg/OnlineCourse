@@ -26,12 +26,17 @@
     <!-- controllers -->
     <script src="/js/app/controllers.js"></script>
     <script src="/js/app/mainCtrl.js"></script>
-    <script src="/js/app/courses/homeCtrl.js"></script>
     <script src="/js/app/users/signinCtrl.js"></script>
+    <script src="/js/app/courses/homeCtrl.js"></script>
+    <script src="/js/app/courses/searchCtrl.js"></script>
+    
 
     <!-- services -->
     <script src="/js/services/services.js"></script>
     <script src="/js/services/authService.js"></script>
+    <script src="/js/services/userService.js"></script>
+    <script src="/js/services/courseService.js"></script>
+    <script src="/js/services/pathService.js"></script>
 
     <script>
       window.fbAsyncInit = function() {
@@ -67,9 +72,9 @@
       	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
         	<div id="top-search-input" style="color:#999">
                   <div class="input-group col-md-12">
-                      <input type="text" class="  search-query form-control" placeholder="Search" />
+                      <input type="text" class=" search-query form-control" placeholder="Search" ng-model="txtSearch" />
                       <span class="input-group-btn">
-                          <button class="btn" type="button">
+                          <button class="btn" type="button" ng-click="search()">
                               <span class="glyphicon glyphicon-search"></span>
                           </button>
                       </span>

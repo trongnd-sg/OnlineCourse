@@ -1,0 +1,9 @@
+<div>
+    Search View here
+</div>
+
+<div class="main container">
+    <div class="row" ng-repeat="course in courseList">
+        <div><a href ui-sref="course({ title: courseTitle })">{{ course.title }}</a></div>
+    </div>
+</div>

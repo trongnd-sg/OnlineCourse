@@ -1,6 +1,6 @@
 angular.module('courseApp.services')
  
-.service('AuthService', function($q, $http, $window, config) {
+.service('AuthService', function($rootScope, $q, $http, $window, config, events) {
   /*
    * loginInfo structure 
    * {
@@ -19,6 +19,7 @@ angular.module('courseApp.services')
     }).success(function(response) {
       $window.localStorage.setItem(config.LOCAL_TOKEN_KEY, response.token)
       $window.localStorage.setItem(config.LOCAL_USER_KEY, JSON.stringify(response.user))
+      $rootScope.$broadcast(events.USER_SIGN_IN)
       deferred.resolve(response)
     }).error(function(data, status, headers, cfg) {
       deferred.reject(data)
@@ -29,6 +30,7 @@ angular.module('courseApp.services')
   this.logout = function() {
     $window.localStorage.removeItem(config.LOCAL_TOKEN_KEY)
     $window.localStorage.removeItem(config.LOCAL_USER_KEY)
+    $rootScope.$broadcast(events.USER_SIGN_OUT)
   }
 
   this.isAuthenticated = function() {

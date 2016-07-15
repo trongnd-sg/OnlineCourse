@@ -9,3 +9,9 @@ angular.module('courseApp.config', [])
 	FACEBOOK_APP_ID: '1701140506826073',
 	GOOGLE_CLIENT_ID: '213358234973-081a9vqg4afl86gfgkgv148cl81svoim.apps.googleusercontent.com'
 })
+
+.constant('events', {
+	USER_SIGN_IN: 'User_Sign_In',
+	USER_SIGN_OUT: 'User_Sign_Out',
+	SEARCH_TEXT_CHANGED: 'Search_Text_Changed'
+})
