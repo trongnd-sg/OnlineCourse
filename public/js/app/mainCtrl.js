@@ -2,8 +2,8 @@ angular.module('courseApp.controllers')
 
 .controller('MainCtrl', function($scope, $state, config, events, AuthService) {
 
-	$scope.isAuthenticated = false
-	$scope.user = null
+	$scope.isAuthenticated = AuthService.isAuthenticated()
+	$scope.user = AuthService.getUser()
 	$scope.txtSearch = ''
 	$scope.isHome = true
 

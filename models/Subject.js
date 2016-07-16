@@ -1,3 +1,4 @@
+var async       = require('async')
 var mongoose    = require('mongoose')
 var Result      = require('../models/Result')
 var StringUtils = require('../utils/StringUtil')
@@ -54,13 +55,13 @@ SubjectSchema.methods.add = function(callback) {
     var self = this
     async.waterfall([
         function(cb) {
-            self.model('Subject').generateUrlTitle(StringUtils.getUrlTitle(this.title.vi), -1, function(err, urlTitle) {
+            self.model('Subject').generateUrlTitle(StringUtils.getUrlTitle(self.title.vi), -1, function(err, urlTitle) {
                 self.urlTitle = urlTitle
                 return cb(null)
             })
         },
         function(cb) {
-            self.model('Subject').save(function(err, subject) {
+            self.save(function(err, subject) {
                 if (err)
                     return callback(Result.DBError)
                 return callback(null, subject)

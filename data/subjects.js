@@ -57,7 +57,7 @@ module.exports = [
     },
     {
         title: {
-            vi: "Ứng dụng VP",
+            vi: "Ứng dụng văn phòng",
             en: "Office Apps"	
         },
         sequence: 8,

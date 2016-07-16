@@ -1,8 +1,4 @@
-angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router'])
-
-.run(function() {
-	console.log('Angular is running.')
-})
+angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router', 'ngStorage'])
 
 .config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, config) {
   console.log('Angular is configuring.')
@@ -53,8 +49,8 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   $httpProvider.interceptors.push(function($window, $q) {
     return {
       request: function(cfg) {
-        if ($window.localStorage.getItem(config.LOCAL_TOKEN_KEY))
-          cfg.headers[config.HTTP_AUTH_HEADER] = $window.localStorage.getItem(config.LOCAL_TOKEN_KEY)
+        //if ($localStorageProvider.get(config.LOCAL_TOKEN_KEY))
+        //  cfg.headers[config.HTTP_AUTH_HEADER] = $localStorageProvider.get(config.LOCAL_TOKEN_KEY)
 	      return cfg;
       },
       /*
@@ -68,4 +64,8 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
       */
     }
   }) // end of httpProvider config
+})
+
+.run(function() {
+	console.log('Angular is running.')
 })

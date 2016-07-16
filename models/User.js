@@ -1,4 +1,5 @@
 var async       = require('async')
+var bcrypt      = require('bcrypt-nodejs')
 var mongoose    = require('mongoose')
 var Result      = require('../models/Result')
 var StringUtils = require('../utils/StringUtil')
@@ -75,7 +76,7 @@ UserSchema.statics.generateHash = function(password) {
  * checking if password is valid
  */
 UserSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
+    return bcrypt.compareSync(password, this.password);
 }
 
 UserSchema.statics.generateUrlName = function(name, suffix, callback) {

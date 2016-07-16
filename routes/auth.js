@@ -10,6 +10,71 @@ var Result   = require('../models/Result')
 
 var router   = express.Router()
 
+/**
+ * Register
+ */
+router.post('/', function(req, res, next) {
+	var userInfo = {
+		email: req.body.email.toLowerCase(),
+		password: User.generateHash(req.body.password),
+		name: req.body.name,
+		role: 'User'
+	}
+	
+	User.find({ 'email': userInfo.email }, function(err, users) {
+		if (err) {
+			res.status(Result.DBError.status).json(Result.DBError)
+			return
+		}
+		if (users && users.length > 0) {
+			res.status(Result.EmailExisted.status).json(Result.EmailExisted)
+			return
+		}
+		var user = new User(userInfo);
+		user.save(function(err, result) {
+			if (err) {
+				res.status(Result.DBError.status).json(Result.DBError)
+				return
+			}
+			res.json(result)
+		})
+	})
+})
+
+/**
+ * Login
+ */
+router.put('/', function(req, res, next) {
+	var loginMethod = req.body.method 
+	console.log('Body:', req.body)
+	if (!loginMethod) {
+		res.status(Result.InvalidArgument.status).json(Result.InvalidArgument)
+		return
+	}
+	
+	if (loginMethod.toLowerCase() === 'local') {
+		doLocalLogin(req, res, next)
+	} else if (loginMethod.toLowerCase() === 'facebook') {
+		doLoginWithFacebook(req, res, next)
+	} else if (loginMethod.toLowerCase() == 'google') {
+		doLoginWithGoogle(req, res, next) 
+	} else {
+		res.status(Result.InvalidArgument.status).json(Result.InvalidArgument)
+	}
+})
+
+/**
+ * refresh token
+ */
+router.get('/', function(req, res, next) {
+	var token =  req.body.token || req.query.token || req.headers['x-authorization']
+	// return if user not sign in yet
+	if (!token) {
+		res.status(Result.UnAuthorized.status).json(Result.UnAuthorized)
+		return
+	}
+})
+
 /*
 	sign-in with email & password
 	{
@@ -32,7 +97,7 @@ function doLocalLogin(req, res, next) {
 			return
 		}
 		var user = results[0]
-		console.log(user.local.password)
+		console.log(user.password)
 		if (!user.validPassword(req.body.password)) {
 			res.status(Result.InvalidPassword.status).json(Result.InvalidPassword)
 			return
@@ -154,37 +219,6 @@ function doLoginWithFacebook(req, res, next) {
 function generateAuthToken(user, method) {
 	return jwt.sign({ user: user, method: method }, secret, { expiresIn: 1440 /* expire in 24 hours */})
 }
-
-router.post('/', function(req, res, next) {
-	var loginMethod = req.body.method 
-	console.log('Body:', req.body)
-	if (!loginMethod) {
-		res.status(Result.InvalidArgument.status).json(Result.InvalidArgument)
-		return
-	}
-	
-	if (loginMethod.toLowerCase() === 'local') {
-		doLocalLogin(req, res, next)
-	} else if (loginMethod.toLowerCase() === 'facebook') {
-		doLoginWithFacebook(req, res, next)
-	} else if (loginMethod.toLowerCase() == 'google') {
-		doLoginWithGoogle(req, res, next) 
-	} else {
-		res.status(Result.InvalidArgument.status).json(Result.InvalidArgument)
-	}
-})
-
-/**
- * refresh token
- */
-router.put('/', function(req, res, next) {
-	var token =  req.body.token || req.query.token || req.headers['x-authorization']
-	// return if user not sign in yet
-	if (!token) {
-		res.status(Result.UnAuthorized.status).json(Result.UnAuthorized)
-		return
-	}
-})
 
 module.exports = router
 

@@ -64,5 +64,16 @@ angular.module('courseApp.controllers')
 		})
 	}
 
+	$scope.register = function() {
+		AuthService.register($scope.userInfo).then(function(response) {
+			alert('Register success!')
+			return false
+		}).catch(function(error) {
+			console.log(error)
+			alert('Code: ' + error.status + '. Message: ' + error.message.vi)
+			return false
+		})
+	}
+
 	initialize()
 })

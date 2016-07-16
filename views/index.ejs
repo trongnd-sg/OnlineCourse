@@ -12,14 +12,15 @@
     <link rel='stylesheet' href='/css/edu.css' />
 
     <!-- Vendor JS libs -->
-    <script src="//apis.google.com/js/client.js"></script>
-    <script src="//content.jwplatform.com/libraries/frRB7BnA.js"></script>
+    <script src="//apis.google.com/js/client.js" defer></script>
+    <script src="//content.jwplatform.com/libraries/frRB7BnA.js" defer></script>
 
     <!-- libs -->
     <script src="/libs/jquery/jquery-1.12.4.min.js"></script>
     <script src="/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script src="/libs/angular/angular-1.5.7.min.js"></script>
     <script src="/libs/angular/angular-ui-router-0.2.18.min.js"></script>
+    <script src="/libs/angular/ngStorage.min.js"></script>
     
     <!-- App scripts -->
     <script src="/js/app/app.js"></script>
@@ -80,7 +81,7 @@
       </div>
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
       	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-        	<div id="top-search-input" style="color:#999" ng-hide="isHome">
+        	<div id="top-search-input" style="color:#999" class="ng-hide" ng-hide="isHome">
             	<form ng-submit="onSearch()">
                   <div class="input-group col-md-12">
                       <input type="search" class="search-query form-control" id="input-search" placeholder="Search" >
@@ -110,10 +111,10 @@
             <div class="row">
             	<div class="col-lg-4 col-md-4  col-sm-6 col-xs-12">
                 	<div class="login-box" ng-hide="isAuthenticated">
-                    	<a href ui-sref="signin">Đăng kí / Đăng nhập </a>
+                    	<a href ui-sref="signin">Đăng ký / Đăng nhập </a>
                   </div>
-                  <div class="login-box" ng-show="isAuthenticated">
-                    	<a href ui-sref="profile">{{ user.name }}</a>
+                  <div class="login-box ng-hide" ng-show="isAuthenticated">
+                    	<a href ui-sref="profile" ng-bind="user.name"></a>
                   </div>
                 </div>
                 <div class="col-lg-8 col-md-8  col-sm-6 hidden-xs" align="right">
