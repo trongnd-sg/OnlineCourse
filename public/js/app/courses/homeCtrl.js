@@ -1,22 +1,20 @@
 angular.module('courseApp.controllers')
 
-.controller('HomeCtrl', function($scope, config) {
+.controller('HomeCtrl', function($scope, config, CourseSerivce) {
 	
-	var initialize = function() {
-		console.log('HomeCtrl is loaded.')
-        jwplayer("videoDiv").setup({
-          file: "https://content.jwplatform.com/videos/HkauGhRi-640.mp4",
-          //file: "/upload/courses/5786111af5a2ff88245dae82.mp4",
-          //width: "720",
-          //height: "480",
-          primary: "flash",
+  var initialize = function() {
+	  console.log('HomeCtrl is loaded.')
+    
+    jwplayer("videoDiv").setup({
+      file: "https://content.jwplatform.com/videos/HkauGhRi-640.mp4",
+      primary: "flash",
 		  events: {
-			onReady: function () { 
-				this.play(); 
-				this.pause(); 
-			}
+        onReady: function () { 
+          this.play(); 
+          this.pause(); 
+        }
 		  }
-        })
+    })
 
 		$(document).ready(function () {
         $('#myCarousel').carousel({
@@ -37,6 +35,30 @@ angular.module('courseApp.controllers')
           }
         });
       });
+
+      $scope.search(false, 2)
 	}
+
+  $scope.courseList = []
+  $scope.paging = {
+    page: 1,
+    size: 8,
+    total: 0
+  }
+  $scope.search = function(isFree, order) {
+    var searchCtx = {
+      isFree: isFree,
+      page: $scope.paging.page,
+      size: $scope.paging.size,
+      order: order
+    }
+    CourseService.search(searchCtx).then(function(response) {
+      $scope.courseList = reponse.course
+      $scope.paging.total = response.total
+    }).catch(function(error) {
+      alert('Error code: ' + error.code + '. Message: ' + error.message.vi)
+    })
+  }
+
 	initialize()
 })

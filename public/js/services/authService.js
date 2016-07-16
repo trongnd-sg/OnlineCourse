@@ -18,7 +18,7 @@ angular.module('courseApp.services')
       data: loginInfo
     }).success(function(response) {
       $sessionStorage[config.LOCAL_TOKEN_KEY] = response.token
-      $sessionStorage[config.LOCAL_USER_KEY] = JSON.stringify(response.user)
+      $sessionStorage[config.LOCAL_USER_KEY] = response.user
       $rootScope.$broadcast(events.USER_SIGN_IN)
       deferred.resolve(response)
     }).error(function(data, status, headers, cfg) {
@@ -40,7 +40,7 @@ angular.module('courseApp.services')
   }
 
   this.getUser = function() {
-    var user = JSON.parse($sessionStorage[config.LOCAL_USER_KEY])
+    var user = $sessionStorage[config.LOCAL_USER_KEY]
     console.log('User:', user)
     return user
   }

@@ -1,6 +1,6 @@
 angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router', 'ngStorage'])
 
-.config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, config) {
+.config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, $sessionStorageProvider, config) {
   console.log('Angular is configuring.')
   /**
    * Configure routing
@@ -37,6 +37,11 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     templateUrl: 'js/app/courses/subject.html',
     controller: 'SubjectCtrl'
   })
+  .state('path', {
+    url: '/con-duong-chuyen-gia',
+    templateUrl: 'js/app/courses/path.html',
+    controller: 'PathCtrl'
+  })
   ;
 
   // Disable html5Mode
@@ -49,8 +54,8 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   $httpProvider.interceptors.push(function($window, $q) {
     return {
       request: function(cfg) {
-        //if ($localStorageProvider.get(config.LOCAL_TOKEN_KEY))
-        //  cfg.headers[config.HTTP_AUTH_HEADER] = $localStorageProvider.get(config.LOCAL_TOKEN_KEY)
+        if ($sessionStorageProvider.get(config.LOCAL_TOKEN_KEY))
+          cfg.headers[config.HTTP_AUTH_HEADER] = $sessionStorageProvider.get(config.LOCAL_TOKEN_KEY)
 	      return cfg;
       },
       /*
