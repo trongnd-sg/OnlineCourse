@@ -41,4 +41,15 @@ router.get('/:id', function(req, res, next) {
   }
 })
 
+router.post('/', function(req, res, next) {
+  var user = new User(req.body)
+  user.save(function(err, result) {
+    if (err) {
+      res.json(Result.DBError)
+      return
+    }
+    res.json(result)
+  }) 
+})
+
 module.exports = router

@@ -1,8 +1,8 @@
 angular.module('courseApp.services')
  
-.factory('UserService', function($q, $http, config) {
+.service('UserService', function($q, $http, config) {
 
-  var getById = function(userId) {
+  this.getById = function(userId) {
     var deferred = $q.defer()
     $http({
       method: 'GET',
@@ -15,7 +15,7 @@ angular.module('courseApp.services')
     return deferred.promise
   }
 
-  var update = function(user) {
+  this.update = function(user) {
     var deferred = $q.defer()
     $http({
       method: 'PUT',
@@ -29,7 +29,7 @@ angular.module('courseApp.services')
     return deferred.promise
   }
 
-  var add = function(user) {
+  this.add = function(user) {
     var deferred = $q.defer()
     $http({
       method: 'POST',
@@ -41,11 +41,5 @@ angular.module('courseApp.services')
       deferred.reject(data)
     })
     return deferred.promise
-  }
- 
-  return {
-    get: getById,
-    update: update,
-    add: add
   }
 })

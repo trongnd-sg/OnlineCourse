@@ -6,9 +6,10 @@ angular.module('courseApp.controllers')
 
 	var initialize = function() {
 		console.log('AuthorCtrl is loaded.')
+		getAuthor()
 	}
 
-	$scope.getAuthor = function() {
+	var getAuthor = function() {
 		UserService.getById($stateParams.authorId).then(function(response) {
 			$scope.author = response
 		}).then(function(error) {

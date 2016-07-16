@@ -52,13 +52,13 @@ TopicSchema.methods.add = function(callback) {
     var self = this
     async.waterfall([
         function(cb) {
-            self.model('Topic').generateUrlTitle(StringUtils.getUrlTitle(this.title.vi), -1, function(err, urlTitle) {
+            self.model('Topic').generateUrlTitle(StringUtils.getUrlTitle(self.title.vi), -1, function(err, urlTitle) {
                 self.urlTitle = urlTitle
                 return cb(null)
             })
         },
         function(cb) {
-            Subject.findById(topic.subjectId, function(err, subject) {
+            Subject.findById(self.subjectId, function(err, subject) {
                 if (err)
                     return cb(Result.DBError)
                 if (!subject) 

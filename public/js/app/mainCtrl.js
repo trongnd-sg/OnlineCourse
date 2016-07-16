@@ -30,5 +30,10 @@ angular.module('courseApp.controllers')
 		return false
 	}
 
+	$scope.signOut = function() {
+		AuthService.logout()
+		$state.go('home')
+	}
+
 	initialize()
 })

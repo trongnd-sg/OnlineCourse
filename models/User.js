@@ -28,6 +28,12 @@ var UserSchema = mongoose.Schema({
 		require: true,
 		unique: true
 	},
+	title: {
+		type: String
+	},
+	career: {
+		type: String
+	},
     avatar: { // link to avatar
         type: String
     },

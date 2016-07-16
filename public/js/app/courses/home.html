@@ -1,379 +1,382 @@
 <!--banner-main-->
-	<div class="row background-banner-main">
-    	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" align="center" >
-        	<img src="images/teacher-image.png" width="333" height="433" />
-            <br />
-            <p>Giáo sư <span class="teacher-name">Nguyễn Hồng Thanh</span>
-                <br/>
-                Trường đại học ABC
-            </p>
+<div class="row background-banner-main">
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" align="center" >
+    <img src="images/teacher-image.png" width="333" height="433" />
+    <br />
+    <p>Giáo sư <span class="teacher-name">Nguyễn Hồng Thanh</span>
+      <br/>
+      Trường đại học ABC
+    </p>
+  </div>
+  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 banner-content">
+    <h2 align="center">Bạn muốn học gì? </h2>
+    <div id="main-search-input" style="color:#fff">
+      <form ng-submit="search(false, 1)">
+        <div class="input-group col-md-12">
+          <span class="input-group-btn">
+          <button class="btn" type="button" ng-click="search(false, 1)">
+          <span class="glyphicon glyphicon-search"></span>
+          </button>
+          </span>
+          <input type="text" class="search-query form-control" ng-model="txtSearch"/>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 banner-content">
-        	<h2 align="center">Bạn muốn học gì? </h2>
-            <div id="main-search-input" style="color:#fff">
-            	<form ng-submit="onSearch()">
-                  <div class="input-group col-md-12">
-                  	  <span class="input-group-btn">
-                          <button class="btn" type="button" ng-click="onSearch()">
-                              <span class="glyphicon glyphicon-search"></span>
-                          </button>
-                      </span>
-                      <input type="text" class="search-query form-control" ng-model="txtSearch"/>
-                  </div>
-              </form>
-            </div>
-            <div class="row" id="banner" style="padding-top:40px;">
-            	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" >
-                    <a href ui-sref="subject({ subjectId: 'thiet-ke-do-hoa' })">
-                    <img src="images/icon_thietkedohoa.png" width="122" height="78"/>
-                    <br />
-                    <span>Thiết kế đồ họa</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'nghe-thuat' })">
-                    <img src="images/icon_sankhau.png" width="122" height="78"/>
-                    <br />
-                    <span>Nghệ thuật</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'kinh-doanh' })">
-                    <img src="images/icon_kinhdoanh.png" width="122" height="78"/>
-                    <br />
-                    <span>Kinh Doanh</span>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'tiep-thi'} )">
-                    <img src="images/icon_marketing.png" width="122" height="78"/>
-                    <br />
-                    <span>Marketing</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'cong-nghe' })">
-                    <img src="images/icon_congnghe.png" width="122" height="78"/>
-                    <br />
-                    <span>Công nghệ</span>
-                    </a>
-                </div>
-            </div>
-            <div class="row" id="banner" style="padding-top:40px;">
-            	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" >
-                    <a href ui-sref="subject({ subjectId: 'phat-trien-ban-than' })">
-                    <img src="images/icon_phattrienbanthan.png" width="122" height="78"  />
-                    <br />
-                    <span>Phát triển bản thân</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'chup-anh-lam-phim' })">
-                    <img src="images/icon_phim.png" width="122" height="78" />
-                    <br />
-                    <span>Chụp ảnh <br /> Làm phim</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'ung-dung-van-phong' })">
-                    <img src="images/icon_ungdungvp.png" width="122" height="78"/>
-                    <br />
-                    <span>Ứng dụng văn phòng</span>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'ngoai-ngu' })">
-                    <img src="images/icon_ngoaingu.png" width="122" height="78"/>
-                    <br />
-                    <span>Ngoại ngữ</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
-                	<a href ui-sref="subject({ subjectId: 'the-thao' })">
-                    <img src="images/icon_thethao.png" width="122" height="78"/>
-                    <br />
-                    <span>Thể thao</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-	</div>
-    <!--banner-main-->
-
+      </form>
+    </div>
+    <div class="row" id="banner" style="padding-top:40px;">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" >
+        <a href ui-sref="subject({ subjectId: 'thiet-ke-do-hoa' })">
+        <img src="images/icon_thietkedohoa.png" width="122" height="78"/>
+        <br />
+        <span>Thiết kế đồ họa</span>
+        </a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'nghe-thuat' })">
+        <img src="images/icon_sankhau.png" width="122" height="78"/>
+        <br />
+        <span>Nghệ thuật</span>
+        </a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'kinh-doanh' })">
+        <img src="images/icon_kinhdoanh.png" width="122" height="78"/>
+        <br />
+        <span>Kinh Doanh</span>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'tiep-thi'} )">
+        <img src="images/icon_marketing.png" width="122" height="78"/>
+        <br />
+        <span>Marketing</span>
+        </a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'cong-nghe' })">
+        <img src="images/icon_congnghe.png" width="122" height="78"/>
+        <br />
+        <span>Công nghệ</span>
+        </a>
+      </div>
+    </div>
+    <div class="row" id="banner" style="padding-top:40px;">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" >
+        <a href ui-sref="subject({ subjectId: 'phat-trien-ban-than' })">
+        <img src="images/icon_phattrienbanthan.png" width="122" height="78"  />
+        <br />
+        <span>Phát triển bản thân</span>
+        </a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'chup-anh-lam-phim' })">
+        <img src="images/icon_phim.png" width="122" height="78" />
+        <br />
+        <span>Chụp ảnh <br /> Làm phim</span>
+        </a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'ung-dung-van-phong' })">
+        <img src="images/icon_ungdungvp.png" width="122" height="78"/>
+        <br />
+        <span>Ứng dụng văn phòng</span>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'ngoai-ngu' })">
+        <img src="images/icon_ngoaingu.png" width="122" height="78"/>
+        <br />
+        <span>Ngoại ngữ</span>
+        </a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 btn_opacity" align="center">
+        <a href ui-sref="subject({ subjectId: 'the-thao' })">
+        <img src="images/icon_thethao.png" width="122" height="78"/>
+        <br />
+        <span>Thể thao</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--banner-main-->
 <!--tab-->
-    <div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <span class="col-lg-12 pull-left">
-                        <!-- Tabs -->
-                        <ul class="nav panel-tabs">
-                            <li class="active"><a href data-toggle="tab">Khóa học phổ biến</a></li>
-                            <li><a href data-toggle="tab">Khóa học mới</a></li>
-                            <li><a href data-toggle="tab">Trải nghiệm khóa học</a></li>
-                            <li><a href ui-sref="path">Con đường chuyên gia</a></li>
-                        </ul>
-                    </span>
-                </div>
-                <div class="panel-body">
-                    <div class="tab-content" style="padding:50px 0px 0px 0px" >
-                        <div class="tab-pane active " id="phobien" align="center">
-                        	<ul class="list-unstyled video-list-thumbs row">
-                                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                                    <a href="#">
-                                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                                        <figcaption>
-                                          <p>Education is the process of facilitating learning, or the acquisition of knowledge
-                                          </p>
-                                      </figcaption>
-                                    </a>
-                                    <div class="info-img" id="info-img">
-                                    	<div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 row">
-                                        	<hr class="style3">
-                                        </div>
-                                        <div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                            	<img src="images/icon_vote.png" width="18" height="20" /> 
-                                                <span style="font-weight:bold;">157</span>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9" align="right">
-                                               Rating   
-                                            </div>
-                                        </div>                                        
-                                    </div>                                    
-                                </li>
-                                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                                    <a href="#">
-                                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                                        <figcaption>
-                                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
-                                      </figcaption>
-                                    </a>
-                                    <div class="info-img" id="info-img">
-                                    	<div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 row">
-                                        	<hr class="style3">
-                                        </div>
-                                        <div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                            	<img src="images/icon_vote.png" width="18" height="20" /> 
-                                                <span style="font-weight:bold;">157</span>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9" align="right">
-                                               Rating   
-                                            </div>
-                                        </div>                                        
-                                    </div>                                    
-                                </li>
-                                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                                    <a href="#">
-                                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                                        <figcaption>
-                                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
-                                      </figcaption>
-                                    </a>
-                                    <div class="info-img" id="info-img">
-                                    	<div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 row">
-                                        	<hr class="style3">
-                                        </div>
-                                        <div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                            	<img src="images/icon_vote.png" width="18" height="20" /> 
-                                                <span style="font-weight:bold;">157</span>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9" align="right">
-                                               Rating   
-                                            </div>
-                                        </div>                                        
-                                    </div>                                    
-                                </li>
-                                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                                    <a href="#">
-                                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                                        <figcaption>
-                                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
-                                      </figcaption>
-                                    </a>
-                                    <div class="info-img" id="info-img">
-                                    	<div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 row">
-                                        	<hr class="style3">
-                                        </div>
-                                        <div class="row">
-                                        	<div class="col-xs-12 col-sm-3" align="left">
-                                            	<img src="images/icon_vote.png" width="18" height="20" /> 
-                                                <span style="font-weight:bold;">157</span>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-9" align="right">
-                                               Rating   
-                                            </div>
-                                        </div>                                        
-                                    </div>                                    
-                                </li>                                
-                            </ul>
-                        </div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <span class="col-lg-12 pull-left">
+          <!-- Tabs -->
+          <ul class="nav panel-tabs">
+            <li class="active"><a href data-toggle="tab">Khóa học phổ biến</a></li>
+            <li><a href data-toggle="tab">Khóa học mới</a></li>
+            <li><a href data-toggle="tab">Trải nghiệm khóa học</a></li>
+            <li><a href ui-sref="path">Con đường chuyên gia</a></li>
+          </ul>
+        </span>
+      </div>
+      <div class="panel-body">
+        <div class="tab-content" style="padding:50px 0px 0px 0px" >
+          <div class="tab-pane active " id="phobien" align="center">
+            <ul class="list-unstyled video-list-thumbs row">
+              <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;" ng-repeat="course in courseList">
+                <a href ui-sref="course({ courseId: '{{ course.urlTitle }}'})">
+                  <img src="images/img-program.png" class="img-responsive" height="130px" />
+                  <span class="duration" ng-if="course.isFree == true"><img src="images/free-icon.png" width="84" height="44" /></span>
+                  <figcaption>
+                    <p ng-bind="course.title"></p>
+                  </figcaption>
+                </a>
+                <div class="info-img" id="info-img">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-3" align="left">
+                      <a href ui-sref="author({ authorId: '{{ course.authors[0].urlName }}' })">
+                      <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
+                      </a>
                     </div>
+                    <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
+                      <a href ui-sref="author({ authorId: '{{ course.authors[0].urlName }}' })">
+                      <span style="font-weight:bold;">Thạc sĩ {{ course.authors[0].name }}</span><br/><span>Giảng viên đại học ABC</span>
+                      </a>                                            
+                    </div>
+                  </div>
+                  <div class="col-lg-12 row">
+                    <hr class="style3">
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-3" align="left">
+                      <img src="images/icon_vote.png" width="18" height="20" /> 
+                      <span style="font-weight:bold;">157</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-9" align="right">
+                      Rating   
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 slide-gray" id="teacher">
-        	<h2>ĐỘI NGŨ GIẢNG VIÊN</h2>
-            <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
-            <div class="row">
-                <div class="span12">
-                    <div style="padding: 30px 0px">
-                        <div id="myCarousel" class="carousel fdi-Carousel slide">
-                         <!-- Carousel items -->
-                            <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-                                <div class="carousel-inner onebyone-carosel">
-                                    <div class="item active">
-                                        <div class="col-md-4">
-                                            <a href="#">
-                                            <img src="images/teacher-small.png" class="img-responsive center-block">
-                                            <div class="text-center">
-                                            	<span class=" teacher-name">JOHN ABC</span>
-                                                <br />
-                                                <span>Giáo Sư Đại Học AMC</span>
-                                             </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-md-4">
-                                            <a href="#">
-                                            <img src="images/teacher-small.png" class="img-responsive center-block">
-                                            <div class="text-center">
-                                            	<span class=" teacher-name">JOHN ABC</span>
-                                                <br />
-                                                <span>Giáo Sư Đại Học AMC</span>
-                                             </div>
-                                            </a>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-md-4">
-                                            <a href="#">
-                                            <img src="images/teacher-small.png" class="img-responsive center-block">
-                                            <div class="text-center">
-                                            	<span class=" teacher-name">JOHN ABC</span>
-                                                <br />
-                                                <span>Giáo Sư Đại Học AMC</span>
-                                             </div>
-                                            </a>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-md-4">
-                                            <a href="#">
-                                            <img src="images/teacher-small.png" class="img-responsive center-block">
-                                            <div class="text-center">
-                                            	<span class=" teacher-name">JOHN ABC</span>
-                                                <br />
-                                                <span>Giáo Sư Đại Học AMC</span>
-                                             </div>
-                                            </a>
-                                            
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <a class="left carousel-control" href="#eventCarousel" data-slide="prev">&#60;</a>
-                                <a class="right carousel-control" href="#eventCarousel" data-slide="next">&#62;</a>
+              </li>
+              <!--
+                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
+                    <a href="#">
+                        <img src="images/img-program.png" class="img-responsive" height="130px" />
+                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
+                        <figcaption>
+                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
+                      </figcaption>
+                    </a>
+                    <div class="info-img" id="info-img">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3" align="left">
+                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
                             </div>
-                            <!--/carousel-inner-->
-                        </div><!--/myCarousel-->
-                    </div><!--/slide-->
-                </div>
-            </div>
+                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
+                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row">
+                            <hr class="style3">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3" align="left">
+                                <img src="images/icon_vote.png" width="18" height="20" /> 
+                                <span style="font-weight:bold;">157</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-9" align="right">
+                               Rating   
+                            </div>
+                        </div>                                        
+                    </div>                                    
+                </li>
+                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
+                    <a href="#">
+                        <img src="images/img-program.png" class="img-responsive" height="130px" />
+                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
+                        <figcaption>
+                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
+                      </figcaption>
+                    </a>
+                    <div class="info-img" id="info-img">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3" align="left">
+                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
+                            </div>
+                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
+                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row">
+                            <hr class="style3">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3" align="left">
+                                <img src="images/icon_vote.png" width="18" height="20" /> 
+                                <span style="font-weight:bold;">157</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-9" align="right">
+                               Rating   
+                            </div>
+                        </div>                                        
+                    </div>                                    
+                </li>
+                
+                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
+                    <a href="#">
+                        <img src="images/img-program.png" class="img-responsive" height="130px" />
+                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
+                        <figcaption>
+                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
+                      </figcaption>
+                    </a>
+                    <div class="info-img" id="info-img">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3" align="left">
+                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
+                            </div>
+                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
+                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row">
+                            <hr class="style3">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3" align="left">
+                                <img src="images/icon_vote.png" width="18" height="20" /> 
+                                <span style="font-weight:bold;">157</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-9" align="right">
+                               Rating   
+                            </div>
+                        </div>                                        
+                    </div>                                    
+                </li>       
+                -->                         
+            </ul>
+          </div>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info-edu247-background" id="teacher">
-        	<h2>NHỮNG LỢI ÍCH ĐẠT ĐƯỢC KHI HỌC TRỰC TUYẾN EDU247</h2>
-            <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
-            <div class="col-lg-6 col-sm-6 col-xs-12" style="padding:30px 0px 0px 0px" align="left" >
-                <div id="videoDiv"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 slide-gray" id="teacher">
+    <h2>ĐỘI NGŨ GIẢNG VIÊN</h2>
+    <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
+    <div class="row">
+      <div class="span12">
+        <div style="padding: 30px 0px">
+          <div id="myCarousel" class="carousel fdi-Carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
+              <div class="carousel-inner onebyone-carosel">
+                <div class="item active">
+                  <div class="col-md-4">
+                    <a href="#">
+                      <img src="images/teacher-small.png" class="img-responsive center-block">
+                      <div class="text-center">
+                        <span class=" teacher-name">JOHN ABC</span>
+                        <br />
+                        <span>Giáo Sư Đại Học AMC</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="col-md-4">
+                    <a href="#">
+                      <img src="images/teacher-small.png" class="img-responsive center-block">
+                      <div class="text-center">
+                        <span class=" teacher-name">JOHN ABC</span>
+                        <br />
+                        <span>Giáo Sư Đại Học AMC</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="col-md-4">
+                    <a href="#">
+                      <img src="images/teacher-small.png" class="img-responsive center-block">
+                      <div class="text-center">
+                        <span class=" teacher-name">JOHN ABC</span>
+                        <br />
+                        <span>Giáo Sư Đại Học AMC</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="col-md-4">
+                    <a href="#">
+                      <img src="images/teacher-small.png" class="img-responsive center-block">
+                      <div class="text-center">
+                        <span class=" teacher-name">JOHN ABC</span>
+                        <br />
+                        <span>Giáo Sư Đại Học AMC</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <a class="left carousel-control" href="#eventCarousel" data-slide="prev">&#60;</a>
+              <a class="right carousel-control" href="#eventCarousel" data-slide="next">&#62;</a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xs-12">
-            	<div class="row" style="padding:30px 0px 0px 0px">
-                	<div class="col-lg-2 col-sm-3 col-xs-4">
-               	    	<img src="images/icon_1.png" width="104" height="105" />
-                    </div>
-                    <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
-                    	<span class="info-edu247-blue"> Học theo phương pháp sư phạm LIPE và có thể học mọi lúc, mọi nơi.</span>
-                        <span>
-                        Phương pháp LIPE được áp dụng thành công tại các trường như Harvard và Stanford. Bạn có thể học bất cứ lúc nào ở... bất cứ nơiđâu chỉ với 1 chiếc máy tính hoặc laptop hoặc điện thoại thông minh được kết nối internet.
-                        </span>	
-                    </div>
-                </div>
-                <div class="row" style="padding:30px 0px 0px 0px">
-                	<div class="col-lg-2 col-sm-3 col-xs-4">
-               	    	<img src="images/icon_2.png" width="104" height="105" />
-                    </div>
-                    <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
-                    	<span class="info-edu247-blue"> Thực hành ngay những gì bạn học cùng với những công cụ hữu ích.</span>
-                        <span>
-                        Sau khi học xong, khóa học sẽ cung cấp cho bạn những công cụ, chỉ dẫn để bạn có thể ứng dung ngay những gì mình vừa học
-                        </span>	
-                    </div>
-                </div>
-                <div class="row" style="padding:30px 0px 0px 0px">
-                	<div class="col-lg-2 col-sm-3 col-xs-4">
-               	    	<img src="images/icon_3.png" width="104" height="105" />
-                    </div>
-                    <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
-                    	<span class="info-edu247-blue"> Luôn luôn thắng lợi.</span>
-                        <span>
-                        Trong 30 ngày nếu bạn không hài lòng về nội dung hay chất lượng khóa học. Chúng tôi sẽ hoàn tiền cho bạn mà không... cần hỏi lý do.không cần hỏi lý do.
-                        </span>	
-                    </div>
-                </div>
-                <div class="row" style="padding:30px 0px 0px 0px">
-                	<div class="col-lg-2 col-sm-3 col-xs-4">
-               	    	<img src="images/icon_4.png" width="104" height="105" />
-                    </div>
-                    <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
-                    	<span class="info-edu247-blue"> Chi phí học tập chỉ bằng 1 bữa ăn ngon</span>
-                        <span>
-                        Học online là hình thức tiết kiệm chi phí nhất hiện nay vì bạn không phải trả tiền mặt bằng học, chi phí đi lại, chi phí thuê... giảng viên và hang tá các chi phí khác.
-                        </span>	
-                    </div>
-                </div>
-            </div>
+            <!--/carousel-inner-->
+          </div>
+          <!--/myCarousel-->
         </div>
-	</div>
-    <!--End Tab-->
+        <!--/slide-->
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info-edu247-background" id="teacher">
+    <h2>NHỮNG LỢI ÍCH ĐẠT ĐƯỢC KHI HỌC TRỰC TUYẾN EDU247</h2>
+    <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
+    <div class="col-lg-6 col-sm-6 col-xs-12" style="padding:30px 0px 0px 0px" align="left" >
+      <div id="videoDiv"></div>
+    </div>
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+      <div class="row" style="padding:30px 0px 0px 0px">
+        <div class="col-lg-2 col-sm-3 col-xs-4">
+          <img src="images/icon_1.png" width="104" height="105" />
+        </div>
+        <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
+          <span class="info-edu247-blue"> Học theo phương pháp sư phạm LIPE và có thể học mọi lúc, mọi nơi.</span>
+          <span>
+          Phương pháp LIPE được áp dụng thành công tại các trường như Harvard và Stanford. Bạn có thể học bất cứ lúc nào ở... bất cứ nơiđâu chỉ với 1 chiếc máy tính hoặc laptop hoặc điện thoại thông minh được kết nối internet.
+          </span>	
+        </div>
+      </div>
+      <div class="row" style="padding:30px 0px 0px 0px">
+        <div class="col-lg-2 col-sm-3 col-xs-4">
+          <img src="images/icon_2.png" width="104" height="105" />
+        </div>
+        <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
+          <span class="info-edu247-blue"> Thực hành ngay những gì bạn học cùng với những công cụ hữu ích.</span>
+          <span>
+          Sau khi học xong, khóa học sẽ cung cấp cho bạn những công cụ, chỉ dẫn để bạn có thể ứng dung ngay những gì mình vừa học
+          </span>	
+        </div>
+      </div>
+      <div class="row" style="padding:30px 0px 0px 0px">
+        <div class="col-lg-2 col-sm-3 col-xs-4">
+          <img src="images/icon_3.png" width="104" height="105" />
+        </div>
+        <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
+          <span class="info-edu247-blue"> Luôn luôn thắng lợi.</span>
+          <span>
+          Trong 30 ngày nếu bạn không hài lòng về nội dung hay chất lượng khóa học. Chúng tôi sẽ hoàn tiền cho bạn mà không... cần hỏi lý do.không cần hỏi lý do.
+          </span>	
+        </div>
+      </div>
+      <div class="row" style="padding:30px 0px 0px 0px">
+        <div class="col-lg-2 col-sm-3 col-xs-4">
+          <img src="images/icon_4.png" width="104" height="105" />
+        </div>
+        <div class="col-lg-10 col-sm-9 col-xs-8 info-edu247" align="left">
+          <span class="info-edu247-blue"> Chi phí học tập chỉ bằng 1 bữa ăn ngon</span>
+          <span>
+          Học online là hình thức tiết kiệm chi phí nhất hiện nay vì bạn không phải trả tiền mặt bằng học, chi phí đi lại, chi phí thuê... giảng viên và hang tá các chi phí khác.
+          </span>	
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Tab-->

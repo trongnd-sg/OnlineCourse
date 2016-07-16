@@ -61,8 +61,7 @@ var CourseSchema = mongoose.Schema({
         },
         urlTitle: {
             type: String,
-            require: true,
-            unique: true
+            require: true
         },
         contents: [{
             title: {
@@ -107,11 +106,11 @@ CourseSchema.pre('validate', function(next) {
     if (this.urlTitle == undefined || this.urlTitle == '')
         this.urlTitle = StringUtils.getUrlTitle(this.title)
     this.text = StringUtils.convertToViString(this.title) + ' ' + StringUtils.convertToViString(this.description)
-    var newCourse = this
+    var self = this
     
     async.parallel([
         function(cb) { // check title
-            newCourse.model('Course').find({ 'urlTitle': newCourse.urlTitle }, function(err, result) {
+            self.model('Course').find({ 'urlTitle': self.urlTitle }, function(err, result) {
                 if (err)
                     return cb(Result.DBError)
                 if (result && result.length > 0)
@@ -120,22 +119,22 @@ CourseSchema.pre('validate', function(next) {
             })
         },
         function(cb) { // check subject
-            Subject.findById(newCourse.subject, function(err, subject) {
+            Subject.findById(self.subject, function(err, subject) {
                 if (err)
                     return cb(Result.DBError)
                 if (subject == null)
                     return cb(Result.SubjectNotExisted)
-                newCourse.text += ' ' + StringUtils.convertToViString(subject.title.vi);
+                self.text += ' ' + StringUtils.convertToViString(subject.title.vi);
                 return cb(null)
             })
         },
         function(cb) { // check topic
-            Topic.findById(newCourse.topic, function(err, topic) {
+            Topic.findById(self.topic, function(err, topic) {
                 if (err)
                     return cb(Result.DBError)
                 if (topic == null)
                     return cb(Result.TopicNotExisted)
-                newCourse.text += ' ' + StringUtils.convertToViString(topic.title.vi);
+                self.text += ' ' + StringUtils.convertToViString(topic.title.vi);
                 return cb(null)
             })
         },
@@ -199,7 +198,9 @@ CourseSchema.statics.search = function(searchContext, callback) {
     
     async.parallel([
         function(cb) {
-            query.exec(function(err, courses) {
+            query
+            .populate('authors')
+            .exec(function(err, courses) {
                 if (err)
                     return cb(Result.DBError)
                 if (courses == null || courses.length == 0)

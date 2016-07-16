@@ -2,34 +2,28 @@
 <html>
   <head>
     <title>EDU247 - Ai cũng có thể học</title>
-
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css">
     <!--
-    <link rel="stylesheet" href="/libs/bootstrap-3.3.6/fonts/glyphicons-halflings-regular.ttf" media="screen">
-    -->    
+      <link rel="stylesheet" href="/libs/bootstrap-3.3.6/fonts/glyphicons-halflings-regular.ttf" media="screen">
+      -->    
     <link rel="stylesheet" href="/libs/bootstrap-3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/libs/bootstrap-3.3.6/css/bootstrap-theme.min.css">
     <link rel='stylesheet' href='/css/edu.css' />
-
     <!-- Vendor JS libs -->
     <script src="//apis.google.com/js/client.js" defer></script>
     <script src="//content.jwplatform.com/libraries/frRB7BnA.js" defer></script>
-
     <!-- libs -->
     <script src="/libs/jquery/jquery-1.12.4.min.js"></script>
     <script src="/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script src="/libs/angular/angular-1.5.7.min.js"></script>
     <script src="/libs/angular/angular-ui-router-0.2.18.min.js"></script>
     <script src="/libs/angular/ngStorage.min.js"></script>
-    
     <!-- App scripts -->
     <script src="/js/app/app.js"></script>
     <script src="/js/app/config.js"></script>
     <script src="/js/app/utils.js"></script>
-
     <!-- App Utils -->
     <script src="/js/utils/params.js"></script>
-
     <!-- services -->
     <script src="/js/services/services.js"></script>
     <script src="/js/services/authService.js"></script>
@@ -37,7 +31,6 @@
     <script src="/js/services/courseService.js"></script>
     <script src="/js/services/pathService.js"></script>
     <script src="/js/services/subjectService.js"></script>
-    
     <!-- controllers -->
     <script src="/js/app/controllers.js"></script>
     <script src="/js/app/mainCtrl.js"></script>
@@ -48,7 +41,6 @@
     <script src="/js/app/courses/courseCtrl.js"></script>
     <script src="/js/app/courses/subjectCtrl.js"></script>
     <script src="/js/app/courses/pathCtrl.js"></script>
-
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -57,7 +49,7 @@
           version    : 'v2.6'
         })
       };
-
+      
       // Load the SDK asynchronously
       // JS SDK - this will be loaded asynchronously
       (function(d, s, id) {
@@ -71,164 +63,162 @@
   </head>
   <body ng-app="courseApp" ng-controller="MainCtrl">
     <!--banner top-->
-	<div class="row">
-   	  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
         <a ui-sref="home">
-   	  	  <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" />
+        <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" />
         </a>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:right" >
         <img src="images/angle.png" width="68" height="97" />
       </div>
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
-      	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-        	<div id="top-search-input" style="color:#999" class="ng-hide" ng-hide="isHome">
-            	<form ng-submit="onSearch()">
-                  <div class="input-group col-md-12">
-                      <input type="search" class="search-query form-control" id="input-search" placeholder="Search" >
-                      <span class="input-group-btn">
-                          <button class="btn" type="button" ng-click="onSearch()">
-                              <span class="glyphicon glyphicon-search"></span>
-                          </button>
-                      </span>
-                  </div>
-                </form>
+        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+          <div id="top-search-input" style="color:#999" class="ng-hide" ng-hide="isHome">
+            <form ng-submit="onSearch()">
+              <div class="input-group col-md-12">
+                <input type="search" class="search-query form-control" id="input-search" placeholder="Search" >
+                <span class="input-group-btn">
+                <button class="btn" type="button" ng-click="onSearch()">
+                <span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
               </div>
+            </form>
+          </div>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 login">
-        	<div class="row hidden-xs" id="top" >
-            	<div class="col-lg-4 col-md-4 hidden-xs hide-test-m">
-                	Have any question?
-                </div>
-                <div class="col-lg-8 col-md-8 col-xs-12 hidden-xs" align="right">
-                	<span class="glyphicon glyphicon-phone"></span>
-                	0915 743 646
-                
-                	<a href="mailto:info@edu247.com" class="mail">
-                      <span class="glyphicon glyphicon-envelope"></span>
-                      info@edu247.com</a>
-                </div>
+          <div class="row hidden-xs" id="top" >
+            <div class="col-lg-4 col-md-4 hidden-xs hide-test-m">
+              Have any question?
             </div>
-            <div class="row">
-            	<div class="col-lg-4 col-md-4  col-sm-6 col-xs-12">
-                	<div class="login-box" ng-hide="isAuthenticated">
-                    	<a href ui-sref="signin">Đăng ký / Đăng nhập </a>
-                  </div>
-                  <div class="login-box ng-hide" ng-show="isAuthenticated">
-                    	<a href ui-sref="profile" ng-bind="user.name"></a>
-                  </div>
-                </div>
-                <div class="col-lg-8 col-md-8  col-sm-6 hidden-xs" align="right">
-                	 <div class="social-box">
-                     	<button class="btn social-btn" type="button">
-                        <img src="images/facebook.png" width="22" height="22" alt="facebook" />
-                     </button>
-                     <button class="btn social-btn" type="button">
-                        <img src="images/twitter.png" width="22" height="22" alt="facebook" />
-                     </button>
-                     <button class="btn social-btn" type="button">
-                        <img src="images/linkedin.png" width="22" height="22" alt="facebook" />
-                     </button>
-                     <button class="btn social-btn" type="button">
-                        <img src="images/youtube.png" width="22" height="22" alt="facebook" />
-                     </button>
-                     </div>
-                </div>
+            <div class="col-lg-8 col-md-8 col-xs-12 hidden-xs" align="right">
+              <span class="glyphicon glyphicon-phone"></span>
+              0915 743 646
+              <a href="mailto:info@edu247.com" class="mail">
+              <span class="glyphicon glyphicon-envelope"></span>
+              info@edu247.com</a>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4  col-sm-6 col-xs-12">
+              <div class="login-box" ng-hide="isAuthenticated">
+                <a href ui-sref="signin">Đăng ký / Đăng nhập </a>
+              </div>
+              <div class="login-box ng-hide" ng-show="isAuthenticated">
+                <a href ui-sref="profile" ng-bind="user.name"></a>
+                <a href ng-click="signOut()">Thoát</a>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-8  col-sm-6 hidden-xs" align="right">
+              <div class="social-box">
+                <button class="btn social-btn" type="button">
+                <img src="images/facebook.png" width="22" height="22" alt="facebook" />
+                </button>
+                <button class="btn social-btn" type="button">
+                <img src="images/twitter.png" width="22" height="22" alt="facebook" />
+                </button>
+                <button class="btn social-btn" type="button">
+                <img src="images/linkedin.png" width="22" height="22" alt="facebook" />
+                </button>
+                <button class="btn social-btn" type="button">
+                <img src="images/youtube.png" width="22" height="22" alt="facebook" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <!-- End banner top-->
-
     <!--Content-->
     <div ui-view></div>
     <!--End Content-->
     <div class="row" style="height:32px"></div>
-
     <!--footer-->
     <div class="row background-footer dialog"  id="footer">
-    	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer" >
-        	DANH MỤC
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Trang chủ</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Giới thiệu</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Tin tức</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Liên hệ</a>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer" >
+        DANH MỤC
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Trang chủ</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Giới thiệu</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Tin tức</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Liên hệ</a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
+        GIỚI THIỆU ALADA
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Đăng ký khóa học</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Hợp tác giảng dạy</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Chính sách bảo mật</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Điều khoản dịch vụ</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Quy chế hoạt động</a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
+        TRỢ GIÚP
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Hướng dẫn sử dụng</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Câu hỏi thường gặp</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Hướng dẫn thanh toán</a>
+        <br />
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <a href="#">Chính xác hoàn trả học phí</a>
+        <br />
+        <input type="submit" class="col-lg-4 col-sm-4 col-xs-4 btn button-red" style="height:35px; width:170px" value="HỢP TÁC GIẢNG DẠY">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
+        KẾT NỐI - LIÊN HỆ VỚI EDU247
+        <br />
+        Thứ 2 - Thứ 6: 08:30 - 21:00
+        <br />
+        Thứ 7: 08:30 - 15:00
+        <br />
+        <span class="glyphicon glyphicon-phone"></span>
+        Hỗ trợ khách hàng 0915 743 646
+        <br />
+        <span class="glyphicon glyphicon-phone"></span>
+        Đăng ký nhận thông tin khuyến mãi:
+        <div class="form-group" style="display: inline-flex;">
+          <input type="text" class="col-lg-8 col-sm-8 col-xs-8 form-control" style="width:auto" placeholder="Nhập email">
+          <input type="submit" class="col-lg-4 col-sm-4 col-xs-4 btn button-red" style="height:35px" value="ĐĂNG KÝ">
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
-        	GIỚI THIỆU ALADA
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Đăng ký khóa học</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Hợp tác giảng dạy</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Chính sách bảo mật</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Điều khoản dịch vụ</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Quy chế hoạt động</a>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
-        	TRỢ GIÚP
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Hướng dẫn sử dụng</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Câu hỏi thường gặp</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Hướng dẫn thanh toán</a>
-            <br />
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <a href="#">Chính xác hoàn trả học phí</a>
-            <br />
-            <input type="submit" class="col-lg-4 col-sm-4 col-xs-4 btn button-red" style="height:35px; width:170px" value="HỢP TÁC GIẢNG DẠY">
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 footer">
-        	KẾT NỐI - LIÊN HỆ VỚI EDU247
-            <br />
-            Thứ 2 - Thứ 6: 08:30 - 21:00
-            <br />
-            Thứ 7: 08:30 - 15:00
-            <br />
-            <span class="glyphicon glyphicon-phone"></span>
-            Hỗ trợ khách hàng 0915 743 646
-            <br />
-            <span class="glyphicon glyphicon-phone"></span>
-            Đăng ký nhận thông tin khuyến mãi:
-            <div class="form-group" style="display: inline-flex;">
-              <input type="text" class="col-lg-8 col-sm-8 col-xs-8 form-control" style="width:auto" placeholder="Nhập email">
-              <input type="submit" class="col-lg-4 col-sm-4 col-xs-4 btn button-red" style="height:35px" value="ĐĂNG KÝ">
-            </div>
-        </div>
+      </div>
     </div>
     <!--END footer-->
     <!--Copyright-->
     <div class="row" style="height:1px;">
     </div>
     <div class="row">
-    	<div class=" col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
-       	 	<span class="copyright"> Copyright 2016 Edu247.vn  -  All right reserved</span>
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:left" >
-        	<img src="images/angle_bottom.png" width="68" height="97" />
-      	</div>
-         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
-            <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
-         </div>
+      <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
+        <span class="copyright"> Copyright 2016 Edu247.vn  -  All right reserved</span>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs background-logo" style="text-align:left" >
+        <img src="images/angle_bottom.png" width="68" height="97" />
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 background-logo">
+        <img src="images/edu_logo.png" width="206" height="97" alt="EDU247 - Ai cũng có thể học" longdesc="index.html" />
+      </div>
     </div>
     <!--END Copyright-->
   </body>

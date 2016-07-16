@@ -81,7 +81,7 @@ router.post('/', function(req, res, next) {
     var course = new Course(req.body);
     course.save(function(err, result) {
         if (err) {
-            res.status(err.status).json(err)
+            res.json(err)
             return
         }
         res.json(result)

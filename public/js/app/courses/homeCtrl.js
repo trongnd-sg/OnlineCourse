@@ -1,6 +1,6 @@
 angular.module('courseApp.controllers')
 
-.controller('HomeCtrl', function($scope, config, CourseSerivce) {
+.controller('HomeCtrl', function($scope, config, CourseService) {
 	
   var initialize = function() {
 	  console.log('HomeCtrl is loaded.')
@@ -47,13 +47,14 @@ angular.module('courseApp.controllers')
   }
   $scope.search = function(isFree, order) {
     var searchCtx = {
+      text: $scope.txtSearch,
       isFree: isFree,
       page: $scope.paging.page,
       size: $scope.paging.size,
       order: order
     }
     CourseService.search(searchCtx).then(function(response) {
-      $scope.courseList = reponse.course
+      $scope.courseList = response.courses
       $scope.paging.total = response.total
     }).catch(function(error) {
       alert('Error code: ' + error.code + '. Message: ' + error.message.vi)
