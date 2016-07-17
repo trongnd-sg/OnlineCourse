@@ -74,10 +74,10 @@
       </div>
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 background-top-blue">
         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-          <div id="top-search-input" style="color:#999" class="ng-hide" ng-hide="isHome">
+          <div id="top-search-input" style="color:#999" class="ng-hide" ng-show="showSearchForm">
             <form ng-submit="onSearch()">
               <div class="input-group col-md-12">
-                <input type="search" class="search-query form-control" id="input-search" placeholder="Search" >
+                <input type="search" class="search-query form-control" id="input-search" placeholder="Search" ng-model="txtSearch">
                 <span class="input-group-btn">
                 <button class="btn" type="button" ng-click="onSearch()">
                 <span class="glyphicon glyphicon-search"></span>

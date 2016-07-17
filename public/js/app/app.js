@@ -18,7 +18,7 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     controller: 'SignInCtrl'
   })
   .state('search', {
-    url: '/tim-kiem',
+    url: '/tim-kiem?text',
     templateUrl: 'js/app/courses/search.html',
     controller: 'SearchCtrl'
   })

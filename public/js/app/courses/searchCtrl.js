@@ -1,12 +1,15 @@
 angular.module('courseApp.controllers')
 
-.controller('SearchCtrl', function($scope, config, events, CourseService) {
+.controller('SearchCtrl', function($scope, $location, config, events, CourseService) {
 	
 	var initialize = function() {
 		console.log('SearchCtrl is loaded.')
 		$scope.$on(events.SEARCH_TEXT_CHANGED, function() {
 			$scope.search()
 		})
+		$scope.$parent.showSearchForm = true
+		if ($location.search().text)
+			$scope.$parent.txtSearch = $location.search().text
 		$scope.search()
 	}
 

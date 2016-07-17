@@ -5,7 +5,7 @@ angular.module('courseApp.controllers')
 	$scope.isAuthenticated = AuthService.isAuthenticated()
 	$scope.user = AuthService.getUser()
 	$scope.txtSearch = ''
-	$scope.isHome = true
+	$scope.showSearchForm = false
 
 	var initialize = function() {
 		$scope.$on(events.USER_SIGN_IN, function() {

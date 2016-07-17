@@ -1,6 +1,6 @@
 angular.module('courseApp.controllers')
 
-.controller('HomeCtrl', function($scope, config, CourseService) {
+.controller('HomeCtrl', function($scope, $state, config, CourseService) {
 	
   var initialize = function() {
 	  console.log('HomeCtrl is loaded.')
@@ -45,6 +45,7 @@ angular.module('courseApp.controllers')
     size: 8,
     total: 0
   }
+  
   $scope.search = function(isFree, order) {
     var searchCtx = {
       text: $scope.txtSearch,
@@ -59,6 +60,12 @@ angular.module('courseApp.controllers')
     }).catch(function(error) {
       alert('Error code: ' + error.code + '. Message: ' + error.message.vi)
     })
+  }
+
+  $scope.txtSearch = ''
+  $scope.gotoSearchPage = function() {
+    $state.go('search', { text: $scope.txtSearch })
+    console.log('txtSearch', $scope.txtSearch)
   }
 
 	initialize()
