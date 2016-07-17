@@ -1,4 +1,4 @@
-angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router', 'ngStorage'])
+angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router', 'ui.bootstrap', 'ngStorage'])
 
 .config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, $sessionStorageProvider, config) {
   console.log('Angular is configuring.')

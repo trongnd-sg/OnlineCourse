@@ -130,12 +130,12 @@
                   <div class="row">
                     <div class="col-xs-12 col-sm-3" align="left">
                       <a href ui-sref="author({ authorId: '{{ course.authors[0].urlName }}' })">
-                      <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
+                      <img src="images/avatar.png" alt="{{ course.authors[0].name }}" class="img-responsive img-circle" />
                       </a>
                     </div>
                     <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
                       <a href ui-sref="author({ authorId: '{{ course.authors[0].urlName }}' })">
-                      <span style="font-weight:bold;">Thạc sĩ {{ course.authors[0].name }}</span><br/><span>Giảng viên đại học ABC</span>
+                      <span style="font-weight:bold;">{{ course.authors[0].title }} {{ course.authors[0].name }}</span><br/><span>{{ course.authors[0].career }}</span>
                       </a>                                            
                     </div>
                   </div>
@@ -145,7 +145,7 @@
                   <div class="row">
                     <div class="col-xs-12 col-sm-3" align="left">
                       <img src="images/icon_vote.png" width="18" height="20" /> 
-                      <span style="font-weight:bold;">157</span>
+                      <span style="font-weight:bold;">{{ course.memberCount }}</span>
                     </div>
                     <div class="col-xs-12 col-sm-9" align="right">
                       Rating   
@@ -153,102 +153,6 @@
                   </div>
                 </div>
               </li>
-              <!--
-                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                    <a href="#">
-                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                        <figcaption>
-                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
-                      </figcaption>
-                    </a>
-                    <div class="info-img" id="info-img">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3" align="left">
-                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                            </div>
-                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                            </div>
-                        </div>
-                        <div class="col-lg-12 row">
-                            <hr class="style3">
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3" align="left">
-                                <img src="images/icon_vote.png" width="18" height="20" /> 
-                                <span style="font-weight:bold;">157</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-9" align="right">
-                               Rating   
-                            </div>
-                        </div>                                        
-                    </div>                                    
-                </li>
-                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                    <a href="#">
-                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                        <figcaption>
-                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
-                      </figcaption>
-                    </a>
-                    <div class="info-img" id="info-img">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3" align="left">
-                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                            </div>
-                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                            </div>
-                        </div>
-                        <div class="col-lg-12 row">
-                            <hr class="style3">
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3" align="left">
-                                <img src="images/icon_vote.png" width="18" height="20" /> 
-                                <span style="font-weight:bold;">157</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-9" align="right">
-                               Rating   
-                            </div>
-                        </div>                                        
-                    </div>                                    
-                </li>
-                
-                <li class="col-lg-3 col-sm-4 col-xs-6" style="padding:0px 10px;">
-                    <a href="#">
-                        <img src="images/img-program.png" class="img-responsive" height="130px" />
-                        <span class="duration"><img src="images/free-icon.png" width="84" height="44" /></span>
-                        <figcaption>
-                          <p>Education is the process of facilitating learning, or the acquisition of knowledge</p>
-                      </figcaption>
-                    </a>
-                    <div class="info-img" id="info-img">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3" align="left">
-                                <img src="images/avatar.png" alt="" class="img-responsive img-circle" />
-                            </div>
-                            <div class="col-xs-12 col-sm-9 teacher-name-detail" align="left">
-                                <span style="font-weight:bold;">Thạc sĩ NGUYỄN VĂN HÙNG</span><br/><span>Giảng viên đại học ABC</span>                                            
-                            </div>
-                        </div>
-                        <div class="col-lg-12 row">
-                            <hr class="style3">
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3" align="left">
-                                <img src="images/icon_vote.png" width="18" height="20" /> 
-                                <span style="font-weight:bold;">157</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-9" align="right">
-                               Rating   
-                            </div>
-                        </div>                                        
-                    </div>                                    
-                </li>       
-                -->                         
             </ul>
           </div>
         </div>
@@ -259,70 +163,15 @@
     <h2>ĐỘI NGŨ GIẢNG VIÊN</h2>
     <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
     <div class="row">
-      <div class="span12">
-        <div style="padding: 30px 0px">
-          <div id="myCarousel" class="carousel fdi-Carousel slide">
-            <!-- Carousel items -->
-            <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-              <div class="carousel-inner onebyone-carosel">
-                <div class="item active">
-                  <div class="col-md-4">
-                    <a href="#">
-                      <img src="images/teacher-small.png" class="img-responsive center-block">
-                      <div class="text-center">
-                        <span class=" teacher-name">JOHN ABC</span>
-                        <br />
-                        <span>Giáo Sư Đại Học AMC</span>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="col-md-4">
-                    <a href="#">
-                      <img src="images/teacher-small.png" class="img-responsive center-block">
-                      <div class="text-center">
-                        <span class=" teacher-name">JOHN ABC</span>
-                        <br />
-                        <span>Giáo Sư Đại Học AMC</span>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="col-md-4">
-                    <a href="#">
-                      <img src="images/teacher-small.png" class="img-responsive center-block">
-                      <div class="text-center">
-                        <span class=" teacher-name">JOHN ABC</span>
-                        <br />
-                        <span>Giáo Sư Đại Học AMC</span>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="col-md-4">
-                    <a href="#">
-                      <img src="images/teacher-small.png" class="img-responsive center-block">
-                      <div class="text-center">
-                        <span class=" teacher-name">JOHN ABC</span>
-                        <br />
-                        <span>Giáo Sư Đại Học AMC</span>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <a class="left carousel-control" href="#eventCarousel" data-slide="prev">&#60;</a>
-              <a class="right carousel-control" href="#eventCarousel" data-slide="next">&#62;</a>
-            </div>
-            <!--/carousel-inner-->
-          </div>
-          <!--/myCarousel-->
+      <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{slide.id}}</h4>
+          <p>{{slide.text}}</p>
         </div>
-        <!--/slide-->
-      </div>
+      </uib-slide>
+      </uib-carousel>
     </div>
   </div>
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info-edu247-background" id="teacher">

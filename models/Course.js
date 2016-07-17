@@ -79,7 +79,10 @@ var CourseSchema = mongoose.Schema({
             }
         }]
     }],
-    text: String,
+    memberCounr: {
+        type: Number,
+        default: 0
+    },
     rating: {
         averageScore: Number,
         total: Number,
@@ -93,6 +96,7 @@ var CourseSchema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
+    text: String, // field for text search
     created: {
     	type: Date,
     	default: new Date()
