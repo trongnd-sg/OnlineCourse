@@ -1,12 +1,12 @@
 angular.module('courseApp.services')
  
-.service('SubjectService', function($q, $http, config, ParamBuilder) {
+.service('TopicService', function($q, $http, config, ParamBuilder) {
 
-  this.getById = function(subjectId) {
+  this.getById = function(topicId) {
     var deferred = $q.defer()
     $http({
       method: 'GET',
-      url: config.API_URL + '/subjects/' + subjectId
+      url: config.API_URL + '/topics/' + topicId
     }).success(function(response) {
       deferred.resolve(response)
     }).error(function(data, status, headers, cfg) {
@@ -15,12 +15,12 @@ angular.module('courseApp.services')
     return deferred.promise
   }
 
-  this.add = function(subject) {
+  this.add = function(topic) {
     var deferred = $q.defer()
     $http({
       method: 'POST',
-      url: config.API_URL + '/subjects',
-      data: subject
+      url: config.API_URL + '/topics',
+      data: topic
     }).success(function(response) {
       deferred.resolve(response)
     }).error(function(data, status, headers, cfg) {
@@ -31,7 +31,7 @@ angular.module('courseApp.services')
 
   this.list = function(paging) {
     var q = ParamBuilder.build(paging)
-    var url = config.API_URL + '/subjects'
+    var url = config.API_URL + '/topics'
     if (q) url += '?' + q
     var deferred = $q.defer()
     $http({

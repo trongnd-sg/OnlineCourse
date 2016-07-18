@@ -8,15 +8,17 @@ angular.module('courseApp.controllers')
     size: 8,
     total: 0
   }
+  $scope.carousel = {
+    interval: 5000,
+    noWrapSlides: false,
+    active: 0,
+    slides: []
+  }
   
-  $scope.myInterval = 5000;
-  $scope.noWrapSlides = false;
-  $scope.active = 0;
   $scope.authors = [];
-  $scope.slides = [];
-  var currIndex = 0;
 
   var getAuthors = function() {
+    var currIndex = 0;
     for (var i = 0; i < 10; ++i) {
       var newWidth = 200 + currIndex;
       $scope.authors.push({
@@ -52,12 +54,8 @@ angular.module('courseApp.controllers')
     
     $scope.search(false, 2)
 
-    $scope.noWrapSlides = false;
-    $scope.active = 0;
-    $scope.carouselInterval = 5000;
-      
     getAuthors();
-    $scope.slides = generateSlides($scope.authors, 4);
+    $scope.carousel.slides = generateSlides($scope.authors, 4);
     
     initJWPlayer();
 	}

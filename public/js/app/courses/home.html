@@ -148,7 +148,7 @@
                       <span style="font-weight:bold;">{{ course.memberCount }}</span>
                     </div>
                     <div class="col-xs-12 col-sm-9" align="right">
-                      Rating   
+                      <uib-rating ng-model="course.rating.averageScore" max="5" read-only="true" aria-labelledby="default-rating"></uib-rating>   
                     </div>
                   </div>
                 </div>
@@ -163,8 +163,8 @@
     <h2>ĐỘI NGŨ GIẢNG VIÊN</h2>
     <span class="text-gray">Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. </span>
     <div class="row">
-      <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+      <uib-carousel active="carousel.active" interval="carousel.interval" no-wrap="carousel.noWrapSlides">
+      <uib-slide ng-repeat="slide in carousel.slides track by slide.id" index="slide.id">
         <div class="item" ng-repeat="author in slide.groups">
           <div class="col-md-3">
             <a href ui-sref="author({ authorId: '{{ author.urlName }}'})">

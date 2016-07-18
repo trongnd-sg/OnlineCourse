@@ -1,11 +1,13 @@
 var async       = require('async')
 var mongoose    = require('mongoose')
 var Subject     = require('../models/Subject')
+var Result      = require('../models/Result')
 var StringUtils = require('../utils/StringUtil')
 
 var TopicSchema = mongoose.Schema({
-    subjectId: {
+    subject: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject',
         require: true
     },
 	title: {
@@ -58,7 +60,7 @@ TopicSchema.methods.add = function(callback) {
             })
         },
         function(cb) {
-            Subject.findById(self.subjectId, function(err, subject) {
+            Subject.findById(self.subject, function(err, subject) {
                 if (err)
                     return cb(Result.DBError)
                 if (!subject) 
@@ -83,6 +85,46 @@ TopicSchema.methods.add = function(callback) {
         }
     ], function(err, result) {
         return callback(err, result)
+    })
+}
+
+TopicSchema.statics.search = function(searchCtx, callback) {
+    var self = this
+    var query = self.model('Topic').find({})
+    var countQuery = self.model('Topic').find({})
+    if (searchCtx.subjectId) {
+        query = query.where('subject', searchCtx.subjectId)
+        countQuery = countQuery.where('subject', searchCtx.subjectId)
+    }
+    
+    query.populate('subject')
+    query.sort('title.vi')
+
+    if (searchCtx.page && searchCtx.size) {
+	    query = query.skip((searchCtx.page - 1) * searchCtx.size)
+		query = query.limit(searchCtx.size)
+    }
+    
+    async.parallel([
+        function(cb) {
+            query.exec(function(err, topics) {
+                if (err)
+                    return cb(Result.DBError)
+                return cb(null, topics)
+            })
+        },
+        function(cb) {
+            countQuery.count(function(err, total) {
+                if (err)
+                    return cb(Result.DBError)
+                return cb(null, total)
+            })
+        }
+    ], function(err, result) {
+        if (err) {
+            return callback(err)
+        }
+        return callback(null, result[0], result[1])
     })
 }
 

@@ -6,12 +6,24 @@ var router  = express.Router()
 
 
 router.get('/', function(req, res, next) {
-    Topic.find({}, function(err, topics) {
+    var searchCtx = {}
+    if (req.query.page)
+        searchCtx.page = parseInt(req.query.page)
+    if (searchCtx.page && searchCtx.page < 1)
+        searchCtx.page = 1
+    if (req.query.size)
+        searchCtx.size = parseInt(req.query.size)
+    if (searchCtx.size && searchCtx.size <= 0)
+        searchCtx.size = 20
+    if (req.query.subjectId && req.query.subjectId !== '')
+        searchCtx.subjectId = req.query.subjectId 
+    
+    Topic.search(searchCtx, function(err, topics, total) {
         if (err) {
             res.status(Result.DBError.status).json(Result.DBError)
             return
         }
-        res.json(topics)
+        res.json({ topics: topics, total: total })
     })
 })
 

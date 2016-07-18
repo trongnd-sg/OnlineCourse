@@ -12,6 +12,26 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     templateUrl: 'js/adm/home/dashboard.html',
     controller: 'DashboardCtrl'
   })
+  .state('subjects', {
+    url: '/subjects',
+    templateUrl: 'js/adm/subjects/subjects.html',
+    controller: 'SubjectsCtrl'
+  })
+  .state('subject', {
+    url: '/subjects/:subjectId',
+    templateUrl: 'js/adm/subjects/subject.html',
+    controller: 'SubjectCtrl'
+  })
+  .state('topics', {
+    url: '/topics',
+    templateUrl: 'js/adm/topics/topics.html',
+    controller: 'TopicsCtrl'
+  })
+  .state('topic', {
+    url: '/topics/:topicId',
+    templateUrl: 'js/adm/topics/topic.html',
+    controller: 'TopicCtrl'
+  })
   .state('courses', {
     url: '/courses',
     templateUrl: 'js/adm/courses/courses.html',
