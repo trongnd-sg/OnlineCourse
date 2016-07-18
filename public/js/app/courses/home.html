@@ -165,10 +165,17 @@
     <div class="row">
       <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
       <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{slide.id}}</h4>
-          <p>{{slide.text}}</p>
+        <div class="item" ng-repeat="author in slide.groups">
+          <div class="col-md-3">
+            <a href ui-sref="author({ authorId: '{{ author.urlName }}'})">
+            <img ng-src="{{ author.avatar }}" class="img-responsive center-block hexagon" style="margin:auto;" width="201px" height:"204">
+            <div class="text-center">
+              <span class=" teacher-name">{{ author.name }}</span>
+              <br />
+              <span>{{ author.career }}</span>
+            </div>
+            </a>
+          </div>
         </div>
       </uib-slide>
       </uib-carousel>

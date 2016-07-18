@@ -143,7 +143,30 @@ CourseSchema.pre('validate', function(next) {
             })
         },
         function(cb) { // check authors
-            return cb(null)
+            var tasks = []
+            for (var i = 0; i < self.authors.length; ++i) {
+                var authorId = self.authors[i]
+                tasks.push(function(cb) {
+                    User.findById(authorId, function(err, author) {
+                        if (err) {
+                            return cb(Result.DBError)
+                        }
+                        if (author == null) {
+                            return cb(Result.UserNotExisted)
+                        }
+                        return cb(null, author)
+                    })
+                })
+            } // end if for
+            async.parallel(tasks, function(err, result) {
+                if (err) {
+                    return cb(err)
+                }
+                for (var i = 0; i < result.length; ++i) {
+                    self.text += ' ' + result[i].name
+                }
+                return cb(null)
+            })
         }
     ], function(err, result) {
         next(err)

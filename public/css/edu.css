@@ -7,8 +7,6 @@
 	margin:0px;
 }
 
-html, body {
-}
 .background-logo{
 	background-color:#f1f1f1;
 	text-align:center;
@@ -590,14 +588,14 @@ hr.style3 {
 		padding: 0px 15px;
 	}
 }
-@media screen and (max-width: 780px){
+@media screen and (max-width: 780px) {
 	#top-search-input {
 		margin-left:10px;
 		margin-top: 0px;
 	}
 	.login-box{
 	  margin-top:10px;
-	  margin-left:0px
+	  margin-left:0px;
 	  padding:5px 30px;
 	  width:200%;
   	}
@@ -646,8 +644,8 @@ hr.style3 {
 	.panel-heading {
 		padding: 0px 15px;
 	}
-	
 }
+
 @media screen and (max-width: 765px){
 	#top-search-input {
 		margin-left:10px;
@@ -655,7 +653,7 @@ hr.style3 {
 	}
 	.login-box{
 	  margin-top:10px;
-	  margin-left:0px
+	  margin-left:0px;
 	  padding:5px 30px;
 	  width:100%;
   	}
@@ -722,4 +720,9 @@ hr.style3 {
 		text-overflow: ellipsis;
 		white-space: nowrap; 
 	}
+}
+
+.hexagon {
+	-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
