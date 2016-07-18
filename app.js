@@ -13,6 +13,7 @@ var users        = require('./routes/users')
 var subjects     = require('./routes/subjects')
 var topics       = require('./routes/topics')
 var courses      = require('./routes/courses')
+var authors      = require('./routes/authors')
 
 var admin        = require('./routes/admin')
 
@@ -42,6 +43,7 @@ app.use('/api/users', users)
 app.use('/api/subjects', subjects)
 app.use('/api/topics', topics)
 app.use('/api/courses', courses)
+app.use('/api/authors', authors)
 
 
 // catch 404 and forward to error handler

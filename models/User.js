@@ -123,7 +123,6 @@ UserSchema.statics.getByName = function(name, callback) {
     .find({ 'urlName': name })
     //.populate('subject')
     //.populate('topic')
-    //.populate('authors')
     .exec(function(err, authors) {
         if (err)
             return callback(Result.DBError)
@@ -131,6 +130,36 @@ UserSchema.statics.getByName = function(name, callback) {
             return callback(Result.AuthorNotExisted)
         return callback(null, authors[0])
     })
+}
+
+UserSchema.statics.search = function(searchCtx, callback) {
+	var self = this
+	var query = self.model('User').find({ 'role': searchCtx.role })
+	var countQuery = self.model('User').find({ 'role': searchCtx.role })
+	if (searchCtx.page && searchCtx.size) {
+		query = query.skip((searchCtx.page - 1) * searchCtx.size)
+		query = query.limit(searchCtx.size)
+	}
+	async.parallel([
+		function(cb) {
+			countQuery.count(function(err, total) {
+				if (err)
+					return cb(Result.DBError)
+				return cb(null, total)
+			})
+		},
+		function(cb) {
+			query.exec(function(err, users) {
+				if (err)
+					return cb(Result.DBError)
+				return cb(null, users)
+			})
+		}
+	], function(err, result) {
+		if (err)
+			return callback(err)
+		return callback(null, result[1], result[0])
+	})
 }
 
 /* 

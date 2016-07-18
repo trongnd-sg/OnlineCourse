@@ -1,26 +1,37 @@
 angular.module('courseApp.controllers')
 
-.controller('AuthorsCtrl', function($scope, $state, config, AuthorService) {
-	$scope.authors = []
-	$scope.paging = {
-		page: 1,
-		size: 20,
-		total: 0
-	}
+.controller('AuthorCtrl', function($scope, $state, $stateParams, config, AuthorService) {
+	$scope.author = null
+
 	var initialize = function() {
 		console.log('AuthorsCtrl is loaded.')
-		listAuthors()
+		if ($stateParams.authorId)
+			getAuthor()
 	}
 
-	var listAuthors = function() {
-		AuthorService.list($scope.paging).then(function(response) {
-			$scope.authors = response.authors
-			$scope.paging.total = response.total
+	var getAuthor = function() {
+		AuthorService.getById($stateParams.authorId).then(function(response) {
+			$scope.author = response
+		}).catch(function(error) {
+			alert('Code: ' + error.code + '<br>Message: ' + error.message)
 		})
 	}
 
-	$scope.createAuthor = function() {
-		$state.go('author')
+	$scope.addAuthor = function() {
+		if ($stateParams.authorId) {
+
+		} else {
+			AuthorService.add($scope.author).then(function(response) {
+				alert('Author added successfully.')
+				$state.go('authors')
+			}).catch(function(error) {
+				alert('Code: ' + error.code);
+			})
+		}
+	}
+
+	$scope.cancel = function() {
+		$state.go('authors')
 	}
 
 	initialize()

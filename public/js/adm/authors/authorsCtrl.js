@@ -16,6 +16,8 @@ angular.module('courseApp.controllers')
 		AuthorService.list($scope.paging).then(function(response) {
 			$scope.authors = response.authors
 			$scope.paging.total = response.total
+		}).catch(function(error) {
+			alert('Error: ' + error.code + '<br>Message: ' + error.message)
 		})
 	}
 

@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Subjects Listing</h2>
+        <h2>Authors Listing</h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -29,18 +29,20 @@
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>Name</th>
                     <th>Title</th>
+                    <th>Career</th>
                     <th>&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="subject in subjects">
+                  <tr ng-repeat="author in authors">
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ subject.title.vi }}</td>
+                    <td>{{ author.name }}</td>
+                    <td>{{ author.title }}</td>
+                    <td>{{ author.career }}</td>
                     <td>
-                        <a href ui-sref="subject({ subjectId: '{{ subject.urlTitle }}' })">Edit</a>
-                        &nbsp;
-                        <a href ng-click="deleteSubject(subject._id)">Delete</a>
+                        <a href ui-sref="author({ authorId: '{{ author.urlName }}' })">Edit</a>
                     </td>
                   </tr>
                 </tbody>
@@ -51,7 +53,7 @@
           <!-- this row will not appear when printing -->
           <div class="row no-print">
             <div class="col-xs-12">
-              <button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="createSubject()"><i class="fa fa-download"></i> Create Subject </button>
+              <button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="createAuthor()"><i class="fa fa-download"></i> Create Author </button>
             </div>
           </div>
         </section>

@@ -32,6 +32,16 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     templateUrl: 'js/adm/topics/topic.html',
     controller: 'TopicCtrl'
   })
+  .state('authors', {
+    url: '/authors',
+    templateUrl: 'js/adm/authors/authors.html',
+    controller: 'AuthorsCtrl'
+  })
+  .state('author', {
+    url: '/authors/:authorId',
+    templateUrl: 'js/adm/authors/author.html',
+    controller: 'AuthorCtrl'
+  })
   .state('courses', {
     url: '/courses',
     templateUrl: 'js/adm/courses/courses.html',
