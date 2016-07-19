@@ -51,7 +51,7 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   /**
    * configure HTTP Provider
    */
-  $httpProvider.interceptors.push(function($window, $q) {
+  $httpProvider.interceptors.push(function() {
     return {
       request: function(cfg) {
         if ($sessionStorageProvider.get(config.LOCAL_TOKEN_KEY))

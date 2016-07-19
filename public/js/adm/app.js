@@ -1,12 +1,17 @@
-angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router'])
+angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'courseApp.config', 'courseApp.utils', 'ui.router', 'ngStorage'])
 
-.config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, config) {
+.config(function($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider, $sessionStorageProvider, config) {
   console.log('Angular is configuring.')
   /**
    * Configure routing
    */
   $urlRouterProvider.otherwise('/');
   $stateProvider
+  .state('login', {
+    url: '/login',
+    templateUrl: 'js/adm/login/login.html',
+    controller: 'LoginCtrl'
+  })
   .state('home', {
     url: '/',
     templateUrl: 'js/adm/home/dashboard.html',
@@ -81,11 +86,11 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   /**
    * configure HTTP Provider
    */
-  $httpProvider.interceptors.push(function($window, $q) {
+  $httpProvider.interceptors.push(function() {
     return {
       request: function(cfg) {
-        if ($window.localStorage.getItem(config.LOCAL_TOKEN_KEY))
-          cfg.headers[config.HTTP_AUTH_HEADER] = $window.localStorage.getItem(config.LOCAL_TOKEN_KEY)
+        if ($sessionStorageProvider.get(config.LOCAL_TOKEN_KEY))
+          cfg.headers[config.HTTP_AUTH_HEADER] = $sessionStorageProvider.get(config.LOCAL_TOKEN_KEY)
 	      return cfg;
       },
       /*
@@ -101,6 +106,13 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   }) // end of httpProvider config
 })
 
-.run(function() {
+.run(function($rootScope, $state, AuthService) {
 	console.log('Angular is running.')
+  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    if (toState.name !== 'login' && !AuthService.isAuthenticated()) {
+      e.preventDefault();
+      console.log(toState.name)
+      return $state.go('login')
+    }
+  })
 })
