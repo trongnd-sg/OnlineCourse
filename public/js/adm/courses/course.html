@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-12 col-xs-12">
     <div class="x_panel">
       <!-- form title -->
       <div class="x_title">
-        <h2>Course Form <small>{{ courseId ? 'Edit' : 'New' }}</small></h2>
+        <h3>Course Form <small>{{ courseId ? 'Edit' : 'New' }}</small></h3>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
           <li class="dropdown">
@@ -103,6 +103,49 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Price</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
               <input type="text" class="form-control" placeholder="Course price" ng-model="course.price">
+            </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="x_title">
+            <h3>Course Modules</h3>
+          </div>
+          <div ng-repeat="module in course.modules">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Module Title</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" placeholder="Module Title" ng-model="module.title">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Trailer</th>
+                      <th>Video</th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="content in module.contents">
+                      <td>{{ $index + 1 }}</td>
+                      <td>{{ content.title }}</td>
+                      <td>
+                        <div class="form-group">
+                          <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Trailer URL" ng-model="content.trailer.url">
+                          </div>
+                          <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Trailer duration" ng-model="content.trailer.duration">
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <div class="ln_solid"></div>
