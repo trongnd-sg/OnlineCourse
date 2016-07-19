@@ -45,7 +45,7 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   ;
 
   // Disable html5Mode
-	$locationProvider.html5Mode(false);
+	$locationProvider.html5Mode(true);
 	$locationProvider.hashPrefix('!');
 
   /**
@@ -71,6 +71,9 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
   }) // end of httpProvider config
 })
 
-.run(function() {
+.run(function($rootScope) {
 	console.log('Angular is running.')
+  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    $rootScope.hideSearchForm = toState.name === 'home'
+  })
 })

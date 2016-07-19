@@ -20,8 +20,8 @@ router.get('/', function(req, res, next) {
     var searchContext = {}
     if (req.query.text && req.query.text !== '')
         searchContext.text = req.query.text.toLowerCase()
-    if (req.query.subject && req.query.subject !== '')
-        searchContext.subject = req.query.subject.toLowerCase()
+    if (req.query.subjectId && req.query.subjectId !== '')
+        searchContext.subject = req.query.subjectId
     if (req.query.topic && req.query.topic !== '')
         searchContext.topic = req.query.topic.toLowerCase()
     if (req.query.free && req.query.free !== '')

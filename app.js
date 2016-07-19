@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser')
 var bodyParser   = require('body-parser')
 var mongoose     = require('mongoose')
 
+var oauth        = require('./config/oauth')
 var routes       = require('./routes/index')
 var auth         = require('./routes/auth')
 var users        = require('./routes/users')
@@ -47,9 +48,10 @@ app.use('/api/authors', authors)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found')
+  res.render('index', { title: 'Express', oauth: oauth });
+  /*var err = new Error('Not Found')
   err.status = 404
-  next(err)
+  next(err)*/
 });
 
 // error handlers

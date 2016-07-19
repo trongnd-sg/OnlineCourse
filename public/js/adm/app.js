@@ -61,7 +61,7 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
         
   // Disable html5Mode
 	$locationProvider.html5Mode(false);
-	$locationProvider.hashPrefix('!');
+	//$locationProvider.hashPrefix('!');
 
   /**
    * configure HTTP Provider
