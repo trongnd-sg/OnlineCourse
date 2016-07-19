@@ -47,15 +47,30 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
     templateUrl: 'js/adm/courses/courses.html',
     controller: 'CoursesCtrl'
   })
-  .state('new-course', {
-    url: '/courses',
-    templateUrl: 'js/adm/courses/course.html',
-    controller: 'CourseCtrl'
-  })
-  .state('edit-course', {
+  .state('course', {
     url: '/courses/:courseId',
     templateUrl: 'js/adm/courses/course.html',
     controller: 'CourseCtrl'
+  })
+  .state('orders', {
+    url: '/orders',
+    templateUrl: 'js/adm/orders/orders.html',
+    controller: 'OrdersCtrl'
+  })
+  .state('order', {
+    url: '/orders/:orderId',
+    templateUrl: 'js/adm/orders/order.html',
+    controller: 'OrderCtrl'
+  })
+  .state('coupons', {
+    url: '/coupons',
+    templateUrl: 'js/adm/coupons/coupons.html',
+    controller: 'CouponsCtrl'
+  })
+  .state('coupon', {
+    url: '/coupons/:couponId',
+    templateUrl: 'js/adm/coupons/coupon.html',
+    controller: 'CouponCtrl'
   })
   ;
         

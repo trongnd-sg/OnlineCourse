@@ -36,6 +36,10 @@
     <script src="/js/adm/topics/topicCtrl.js"></script>
     <script src="/js/adm/authors/authorsCtrl.js"></script>
     <script src="/js/adm/authors/authorCtrl.js"></script>
+    <script src="/js/adm/authors/ordersCtrl.js"></script>
+    <script src="/js/adm/authors/orderCtrl.js"></script>
+    <script src="/js/adm/authors/couponsCtrl.js"></script>
+    <script src="/js/adm/authors/couponCtrl.js"></script>
     <!-- services -->
     <script src="/js/services/services.js"></script>
     <script src="/js/services/authService.js"></script>
@@ -43,6 +47,8 @@
     <script src="/js/services/subjectService.js"></script>
     <script src="/js/services/topicService.js"></script>
     <script src="/js/services/authorService.js"></script>
+    <script src="/js/services/orderService.js"></script>
+    <script src="/js/services/couponService.js"></script>
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -79,11 +85,18 @@
                   <li>
                     <a><i class="fa fa-edit"></i> Courses <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href ui-sref="authors">Authors</a></li>
                       <li><a href ui-sref="subjects">Subjects</a></li>
                       <li><a href ui-sref="topics">Topics</a></li>
                       <li><a href ui-sref="courses">Courses</a></li>
                       <li><a href ui-sref="paths">Learning Path</a></li>
-                      <li><a href ui-sref="authors">Authors</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-desktop"></i> Management <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href ui-sref="orders">Orders</a></li>
+                      <li><a href ui-sref="coupons">Coupons</a></li>
                     </ul>
                   </li>
                   <!--
