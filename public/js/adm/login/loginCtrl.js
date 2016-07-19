@@ -2,8 +2,8 @@ angular.module('courseApp.controllers')
 
 .controller('LoginCtrl', function($scope, $state, AuthService) {
 	$scope.userInfo = {
-		email: '',
-		password: '',
+		email: 'admin@example.com',
+		password: '123456',
 		method: 'local'
 	}
 	var initialize = function() {
