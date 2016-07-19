@@ -109,10 +109,10 @@ angular.module('courseApp', ['courseApp.controllers', 'courseApp.services', 'cou
 .run(function($rootScope, $state, AuthService) {
 	console.log('Angular is running.')
   $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-    /*if (toState.name !== 'login' && !AuthService.isAuthenticated()) {
+    if (toState.name !== 'login' && !AuthService.isAuthenticated()) {
       e.preventDefault();
       console.log(toState.name)
       return $state.go('login')
-    }*/
+    }
   })
 })

@@ -54,6 +54,8 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var user = new User(req.body)
   user.role = 'Teacher'
+  if (req.body.password)
+    user.password = User.generateHash(req.body.password)
   user.save(function(err, result) {
     if (err) {
       res.json(Result.DBError)
